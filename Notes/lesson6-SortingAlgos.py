@@ -23,8 +23,18 @@ There are multiple types of Sorting Algorithms:
             - Not good for big lists
 
     - Bubble Sort
+        Takes 2 values and swaps them, checks if the 1st value is bigger than the 2nd value.
+        If so they swap, then that value gets compared with the next value and repeats until the array ends.
+        It take one value at a time, that value gets compared with all until it is smaller than the one after and it stays
+        in that position.
 
-    - 
+        Advantages
+            + Easy to understand
+            + No need for additional Memory space
+
+    - Selection Sort
+        Trys to find the smallest value and swaps it with the first element of the unsorted part.
+        Repeated untill all is sorted.
     - 
     - 
     - 
@@ -60,14 +70,23 @@ print("Unsorted array: ",arr)
 insertSort(arr)
 print("Sorted array: ",arr)
 '''
-
+'''
 #Bubble Sort -----------------------
 def bubSort(arr):
-    n=len(arr)                                      #Time -> O(1)
-    for i in range(n):                              #Time -> O(n)
-        for j in range(0,n-i-1):                    #Time -> O(n)
-            if arr[j]>arr[j+1]:                     #Time -> 
-                arr[j],arr[j+1]=arr[j+1],arr[j]     #Time -> O(1)
+    n=len(arr)                                      #Time -> O(1)      
+    for i in range(n):                              #Time -> O(n)   This i is for the amount of values in the array
+        for j in range(0,n-i-1):                    #Time -> O(n)   J is the value itself that gets checked and swapped 
+                                                    #               (it goes to n-i-1 because we get the largest element to the last position in the array & we dont need to check it again)
+            if arr[j]>arr[j+1]:                     #Time -> O(1)   Checks if the value is bigger than the next one
+                arr[j],arr[j+1]=arr[j+1],arr[j]     #Time -> O(1)   If that is true it swaps them and then the J loop works again
+                                                    #               If it is false then the loop breaks
+                                                    #               Once J loop is done I loop increments and the J loop starts again
+                                                    #               When i is finished completly the whole array is sorted
+                                                    #
+                                                    #Total  -> O(1)+[O(n)*O(n)*O(1)*O(1)]
+                                                    #       -> O(n^2)
+
+#arr = [84,39,583,239,542,245,1,69]
 
 size=int(input("Enter the size of the array: "))
 
@@ -78,4 +97,33 @@ for _ in range(size):
 
 print("Unsorted array: ",arr)
 bubSort(arr)
+print("Sorted array: ",arr)
+'''
+
+#Selection Sort --------------------
+def selectSort(arr):
+    n=len(arr)                                  #Time -> O(1)                         
+    for i in range(n):                          #Time -> O(n)   
+        min = i                                 #Time -> O(1)   Makes the minimum value the i value (if i =0 then its the first value)
+        for j in range(i+1,n):                  #Time -> O(n)   This j loop checks if there is something smaller than our min value
+            if arr[j]<arr[min]:                 #Time -> O(1)   if it is true, then the min becomes that new value then j loop ends (it runs again until n is reached)
+                min = j                         #Time -> O(1)   If false then min stays the same then j loop ends (it runs again until n is reached)
+        arr[i],arr[min] = arr[min], arr[i]      #Time -> O(1)   the i value and the min value swap to have the smallest value in the beginning of the array
+                                                #               This repeats until i reaches n (which is the end of the array)
+                                                #               Once it is over it is fully sorted
+                                                #
+                                                #Total  ->  O(1)+[O(n)*O(1)*O(n)*O(1)*O(1)*O(1)]
+                                                #       ->  O(n^2)
+
+#arr = [84,39,583,239,542,245,1,69]
+
+size=int(input("Enter the size of the array: "))
+
+arr=[]
+for _ in range(size):
+    value = int(input("Enter a Value: "))
+    arr.append(value)
+
+print("Unsorted array: ",arr)
+selectSort(arr)
 print("Sorted array: ",arr)
