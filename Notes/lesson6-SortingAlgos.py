@@ -2,9 +2,9 @@
 '''
 What are Sorting Algorithms?
 They are Algorithms that take data as an input, and sort them in a certain way, like:
-    - Size
-    - multiples
-    - true or not
+    - Numbers
+    - prices
+    - dates
     - etc
 
 There are multiple types of Sorting Algorithms:
@@ -34,9 +34,21 @@ There are multiple types of Sorting Algorithms:
 
     - Selection Sort
         Trys to find the smallest value and swaps it with the first element of the unsorted part.
-        Repeated untill all is sorted.
-    - 
-    - 
+        Repeated untill all is sorted. (Full explaination in code below)
+
+        Advantages
+            +
+
+Divde and Conquer Algorithm
+    This is a type of Algorithm that splits up the problem into the smallest possible parts (subproblems).
+    It then solves them independently and then merges the solution after it is done.
+    This gives the solution to the bigger problem that was orginally proposed.
+    This is a stratagy that some Sorting Algorithms use to make things simpler for the computer
+    and save some time while doing so.
+
+    Some Sorting algorithms that use this are:     
+        - Merge sort
+
     - 
     -
     -
@@ -56,7 +68,7 @@ def insertSort(arr):
             j-=1                        #J decrements by 1 (if -1 then loop ends, if not it continues to compare over and over until j = -1)    Time = O(1)   
         arr[j+1]=key                    #when while loop ends, j+1 becomes the key value, and then it repeats for all iterations                Time = O(1)
                                         #                                                                                                       Total -> [O(n)*O(1)*O(1)*O(n)*O(1)*O(1)] -> O(n^2)
-
+                                        #                                                     Big O Notation is in Lesson5-AlgoIntro.py
 #arr = [84,39,583,239,542,245,1,69]
 
 size=int(input("Enter the size of the array: "))
@@ -99,15 +111,16 @@ print("Unsorted array: ",arr)
 bubSort(arr)
 print("Sorted array: ",arr)
 '''
-
+'''
 #Selection Sort --------------------
 def selectSort(arr):
     n=len(arr)                                  #Time -> O(1)                         
     for i in range(n):                          #Time -> O(n)   
         min = i                                 #Time -> O(1)   Makes the minimum value the i value (if i =0 then its the first value)
         for j in range(i+1,n):                  #Time -> O(n)   This j loop checks if there is something smaller than our min value
-            if arr[j]<arr[min]:                 #Time -> O(1)   if it is true, then the min becomes that new value then j loop ends (it runs again until n is reached)
-                min = j                         #Time -> O(1)   If false then min stays the same then j loop ends (it runs again until n is reached)
+            if arr[j]<arr[min]:                 #Time -> O(1)   if it is true, then the min becomes that new value then j loop ends 
+                min = j                         #Time -> O(1)   If false then min stays the same then j loop ends 
+                                                #                  - The j loop repeats until it reaches n no matter the outcome of the if statment
         arr[i],arr[min] = arr[min], arr[i]      #Time -> O(1)   the i value and the min value swap to have the smallest value in the beginning of the array
                                                 #               This repeats until i reaches n (which is the end of the array)
                                                 #               Once it is over it is fully sorted
@@ -127,3 +140,4 @@ for _ in range(size):
 print("Unsorted array: ",arr)
 selectSort(arr)
 print("Sorted array: ",arr)
+'''
