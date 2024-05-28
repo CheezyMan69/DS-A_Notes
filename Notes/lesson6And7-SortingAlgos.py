@@ -18,9 +18,11 @@ There are multiple types of Sorting Algorithms:
             + Stable Algorithm
             + Fast for small lists
             + Space effcient
+            + Great for almost sorted lists
         
         Disadvantages
             - Not good for big lists
+            - Not as fast or effiecent as other sorting algos
 
     - Bubble Sort
         Takes 2 values and swaps them, checks if the 1st value is bigger than the 2nd value.
@@ -31,13 +33,24 @@ There are multiple types of Sorting Algorithms:
         Advantages
             + Easy to understand
             + No need for additional Memory space
+            + Stable Algorithm (elements with same value keep their order in the sorted list)
+        
+        Disadvantages
+            - Time Complexity of O(n^2) = slow for big lists
+            - comparison-based algo = needs some thing to compare with to find the order. can slow down the algo
 
     - Selection Sort
         Trys to find the smallest value and swaps it with the first element of the unsorted part.
         Repeated untill all is sorted. (Full explaination in code below)
 
         Advantages
-            +
+            + Fantastic at small data sets
+            + Simple enough
+        
+        Disadvantages
+            - O(n^2) for time compexity = slow for big data sets
+            - Does not work for large lists
+            - not stable (does not keep the order of elements with the same value)
 
 Divde and Conquer Algorithm
     This is a type of Algorithm that splits up the problem into the smallest possible parts (subproblems).
@@ -47,13 +60,14 @@ Divde and Conquer Algorithm
     and save some time while doing so.
 
     Some Sorting algorithms that use this are:     
-        - Merge sort
+        - Merge Sort
 
-    - 
-    -
-    -
-    -
+        - Quick Sort
 
+        - Counting Sort
+
+        - Bucket Sort
+    
 
 '''
 #Code ------------------------------------------------------------------------------
