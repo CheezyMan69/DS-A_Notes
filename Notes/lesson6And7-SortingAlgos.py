@@ -61,7 +61,10 @@ Divde and Conquer Algorithm
 
     Some Sorting algorithms that use this are:     
         - Merge Sort
-
+            Uses the divide and conquer algo of making them the smallest possible problems/lists by halfing the 
+            lists to its smallest number then it solves them (conquers them) then merges them in the end to provide 
+            the solved and sorted list
+        
         - Quick Sort
 
         - Counting Sort
@@ -155,3 +158,46 @@ print("Unsorted array: ",arr)
 selectSort(arr)
 print("Sorted array: ",arr)
 '''
+
+#Merge Sort ------------------------
+def mergeSort(arr):
+    if len(arr) > 1:
+        half = len(arr)//2                              #// = int division (python normally uses floats)
+        leftHalf = arr[:half]                           #the : indicates the direction of the array that will be focused on
+        rightHalf = arr[half:]
+        mergeSort(leftHalf)                             #calls the function again to keep spliting each half into smaller sublists
+        mergeSort(rightHalf)
+
+        i=j=k=0                                         #initalizing values
+        while i<len(leftHalf) and j<len(rightHalf):     #only works when both are true
+            if leftHalf[i]<rightHalf[j]:                #checks if the left half element i is smaller that the right half element j (both the first in their halfs [0])
+                arr[k] = leftHalf[i]                    #if TRUE the array element k (in this case 0) will be that value
+                i+=1                                    #i increments by 1 to move on to the next element on the left half
+            else: 
+                arr[k]=rightHalf[j]                     #if FALSE the array element k will be the value of element j in the right half
+                j+=1                                    #j increments by 1 to move on to the next element on the right half
+
+            k+=1                                        #k increment by 1 to move on to the next element in the array (outside of if else so it will occur after it)
+                                                        #the while loop repeats if both arguments are true and breaks (moves on) if not
+
+        while i<len(leftHalf):                          #only if 1 is true
+            arr[k]=leftHalf[i]                          #
+            i+=1
+            k+=1
+        while j<len(rightHalf):
+            arr[k] = rightHalf[j]
+            j+=1
+            k+=1
+
+#arr = [84,39,583,239,542,245,1,69]
+
+size=int(input("Enter the size of the array: "))
+
+arr=[]
+for _ in range(size):
+    value = int(input("Enter a Value: "))
+    arr.append(value)
+
+print("Unsorted array: ",arr)
+mergeSort(arr)
+print("Sorted array: ",arr)
