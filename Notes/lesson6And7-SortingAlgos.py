@@ -166,10 +166,12 @@ def mergeSort(arr):
         leftHalf = arr[:half]                           #the : indicates the direction of the array that will be focused on
         rightHalf = arr[half:]
         mergeSort(leftHalf)                             #calls the function again to keep spliting each half into smaller sublists
-        mergeSort(rightHalf)
+        mergeSort(rightHalf)                            #this keeps going until it cannot be divided anymore
 
         i=j=k=0                                         #initalizing values
         while i<len(leftHalf) and j<len(rightHalf):     #only works when both are true
+                                                        #Argument -> while i is smaller than the length of the left half and j is smaller than the length of the right half
+                                                        
             if leftHalf[i]<rightHalf[j]:                #checks if the left half element i is smaller that the right half element j (both the first in their halfs [0])
                 arr[k] = leftHalf[i]                    #if TRUE the array element k (in this case 0) will be that value
                 i+=1                                    #i increments by 1 to move on to the next element on the left half
@@ -181,13 +183,13 @@ def mergeSort(arr):
                                                         #the while loop repeats if both arguments are true and breaks (moves on) if not
 
         while i<len(leftHalf):                          #only if 1 is true
-            arr[k]=leftHalf[i]                          #
-            i+=1
-            k+=1
+            arr[k]=leftHalf[i]                          #array element k takes the value of element i in the left half
+            i+=1                                        #i increments by 1 to move on to the next element in the left half
+            k+=1                                        #k increment by 1 to move on to the next element in the array 
         while j<len(rightHalf):
-            arr[k] = rightHalf[j]
-            j+=1
-            k+=1
+            arr[k] = rightHalf[j]                       #array element k takes the value of element j in the right half
+            j+=1                                        #j increments by 1 to move on to the next element on the right half
+            k+=1                                        #k increment by 1 to move on to the next element in the array
 
 #arr = [84,39,583,239,542,245,1,69]
 
