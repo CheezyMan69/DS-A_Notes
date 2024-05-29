@@ -64,9 +64,19 @@ Divde and Conquer Algorithm
             Uses the divide and conquer algo of making them the smallest possible problems/lists by halfing the 
             lists to its smallest number then it solves them (conquers them) then merges them in the end to provide 
             the solved and sorted list
+
+            Advantages
+                + Time complexity O(n log n) -> fast for big data sets
+                + Stable
+                + Simple (I dare to disagree)
+            
+            Disadvantages
+                - Takes a lot of additional memory space
+                - Creates more arrays to store the sorted halfs so it takes more space
         
         - Quick Sort
-
+            
+        
         - Counting Sort
 
         - Bucket Sort
@@ -164,14 +174,18 @@ def mergeSort(arr):
     if len(arr) > 1:
         half = len(arr)//2                              #// = int division (python normally uses floats)
         leftHalf = arr[:half]                           #the : indicates the direction of the array that will be focused on
-        rightHalf = arr[half:]
+        rightHalf = arr[half:]                          # :half -> before half, half: -> half and after half
+
         mergeSort(leftHalf)                             #calls the function again to keep spliting each half into smaller sublists
         mergeSort(rightHalf)                            #this keeps going until it cannot be divided anymore
+                                                        #these function calls sort each half first before moving on using next part of the code
+                                                        #once each half is sorted, it will sort them against each other and add the result to the main array
+                                                        #Merge sort uses recursive functions to sort the whole array
 
         i=j=k=0                                         #initalizing values
         while i<len(leftHalf) and j<len(rightHalf):     #only works when both are true
                                                         #Argument -> while i is smaller than the length of the left half and j is smaller than the length of the right half
-                                                        
+
             if leftHalf[i]<rightHalf[j]:                #checks if the left half element i is smaller that the right half element j (both the first in their halfs [0])
                 arr[k] = leftHalf[i]                    #if TRUE the array element k (in this case 0) will be that value
                 i+=1                                    #i increments by 1 to move on to the next element on the left half
