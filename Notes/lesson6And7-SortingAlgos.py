@@ -230,3 +230,32 @@ print("Sorted array: ",arr)
 '''
 
 #Quick Sort ------------------------
+def quickSort(arr,low,high):
+    if low<high:                                    #Time -> O(1)
+        pivotIndex = partition(arr,low,high)        #Time -> O(1)
+        quickSort(arr,low,pivotIndex-1)             #Time -> O(n)
+        quickSort(arr,pivotIndex+1,high)            #Time -> O(n)
+                                                    #Total -> O(1)+O(n)*O(n) = O(n^2)
+def partition(arr,low,high):
+    pivot = arr[high]                               #Time -> O(1)   gets the pivot to be the last element (high is the last element)
+    i=low-1                                         #Time -> O(1)   i becomes the value before the first value (low)
+    for j in range (low,high):                      #Time -> O(n)   lets j run from the 1st element (low) to the last element (high) (j=low;j<high;j++)
+        if arr[j]<pivot:                            #Time -> O(1)   checks if the j element is smaller than the pivot 
+            i+=1                                    #Time -> O(1)   if TRUE the i increments first
+            arr[i],arr[j] = arr[j], arr[i]          #Time -> O(1)   and the values of j and i swap 
+                                                    #               then the for loop repeats until j is at the last element (high)
+    arr[i+1],arr[high] = arr[high], arr[i+1]        #Time -> O(1)   i+1 becomes the new high which is the new pivot
+    return i+1                                      #Time -> O(1)   we return i+1 (why? i will look into it later)
+
+#arr = [84,39,583,239,542,245,1,69]
+
+size=int(input("Enter the size of the array: "))
+
+arr=[]
+for _ in range(size):
+    value = int(input("Enter a Value: "))
+    arr.append(value)
+
+print("Unsorted array: ",arr)
+quickSort(arr,0,len(arr)-1)                         #low = 0, high = length of array - 1
+print("Sorted array: ",arr)
