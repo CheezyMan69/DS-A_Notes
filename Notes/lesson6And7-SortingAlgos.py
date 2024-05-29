@@ -75,7 +75,17 @@ Divde and Conquer Algorithm
                 - Creates more arrays to store the sorted halfs so it takes more space
         
         - Quick Sort
+            Uses the divide and concquer but uses pivots and partitions. Pivots are elements that are compared within the array.
+            Anything smaller than the selected pivot will go to the left side and anything that is larger will go to the right side.
+            This places the pivot in the right place. This action splits the array into a left side (smaller) and a right side (larger) called partitions.
+            A pivot is chosen in each and then the process is repeated (recursivly done) until it is fully sorted.
+            The pivot is usally the last or first element in the array (also the same way when seperated into partitions).
+
+            Advantages
+                +
             
+            Disadvantages
+                - 
         
         - Counting Sort
 
@@ -168,7 +178,7 @@ print("Unsorted array: ",arr)
 selectSort(arr)
 print("Sorted array: ",arr)
 '''
-
+'''
 #Merge Sort ------------------------
 def mergeSort(arr):
     if len(arr) > 1:
@@ -217,3 +227,6 @@ for _ in range(size):
 print("Unsorted array: ",arr)
 mergeSort(arr)
 print("Sorted array: ",arr)
+'''
+
+#Quick Sort ------------------------
