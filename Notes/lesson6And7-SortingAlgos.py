@@ -82,10 +82,13 @@ Divde and Conquer Algorithm
             The pivot is usally the last or first element in the array (also the same way when seperated into partitions).
 
             Advantages
-                +
+                + Efficent on large data sets
+                + Requiers small amount of memory 
             
             Disadvantages
-                - 
+                - Worst case has a time comlexity of O(n^2)
+                - Not good for small data sets
+                - Not stable (does not keep the order of the values)
         
         - Counting Sort
             This is not a divide and conquer algo, it also does NOT use comparisons. It counts the frequency of each value.
@@ -100,14 +103,24 @@ Divde and Conquer Algorithm
             size = 6+1 = 7
             counting algo [0,1,2,3,4,5,6]
                           [1,1,1,2,0,2,1] -> for the value 0 it appears only once so in the element index [0] the value is 1
+                          [1,2,3,5,5,7,8] -> cumilative frequancy
+            
+            After reaching the cumilative frequancy stage, it goes back to the original array and looks at the first value.
+            It then looks at the counting array and checks which position that value is in.
+            It places that value in that postion (eg. 2 is in the 3rd position [num in cumilative frequancy]) then it decrements it by one.
+            This action is for when the list goes back to that number, it can be put into that new position.
 
             Advantages 
                 + Faster than all comaprison-based algos
+                + Stable (keeps the order the same)
+                + Easy to code (bullshit)
 
             Disadvantages
-                -
+                - Does not work on decimals (only on whole numbers [int])
+                - Not good with big values
+                - Uses extra place in memory 
             
-        - Bucket Sort
+        - Bucket Sort (will be dealt with next lesson [name of file will not change tho])
     
 
 '''
@@ -262,8 +275,9 @@ def partition(arr,low,high):
             i+=1                                    #Time -> O(1)   if TRUE the i increments first
             arr[i],arr[j] = arr[j], arr[i]          #Time -> O(1)   and the values of j and i swap 
                                                     #               then the for loop repeats until j is at the last element (high)
+
     arr[i+1],arr[high] = arr[high], arr[i+1]        #Time -> O(1)   i+1 becomes the new high which is the new pivot
-    return i+1                                      #Time -> O(1)   we return i+1 (why? i will look into it later)
+    return i+1                                      #Time -> O(1)   we return i+1 because its our new pivot which is used in the quick sort function
 
 #arr = [84,39,583,239,542,245,1,69]
 
@@ -278,7 +292,7 @@ print("Unsorted array: ",arr)
 quickSort(arr,0,len(arr)-1)                         #low = 0, high = length of array - 1
 print("Sorted array: ",arr)
 '''
-
+'''
 #Counting Sort ---------------------
 def countSort(arr):
     maxValue = max(arr)                 #Time -> O(1)   max value is the maximum value that appears i nthe array
@@ -286,14 +300,14 @@ def countSort(arr):
     output =[0]*len(arr)                #Time -> O(n)   creates a final array
 
     for num in arr:                     #Time -> O(n)   count occurences of each element
-        counts[num]+=1                  #Time -> O(1)   counts the frequency of each number by incrementing the element[num] with 
+        counts[num]+=1                  #Time -> O(1)   counts the frequency of each number by incrementing the element[num] by 1
     
     for i in range(1,maxValue+1):       #Time -> O(m)   update counts to contin the position of each element in the sorted array
-        counts[i] += counts[i-1]        #Time -> O(1)
+        counts[i] += counts[i-1]        #Time -> O(1)   Calculates the cumilative frequency as seen in the explaination in [Notes]
 
     for num in reversed(arr):           #Time -> O(n)   build the sorted array
-        output[counts[num]-1] = num     #Time -> O(1)   
-        counts[num] -=1                 #Time -> O(1)
+        output[counts[num]-1] = num     #Time -> O(1)   Places the values in their correct position
+        counts[num] -=1                 #Time -> O(1)   decrements the count by one and then repeats for the next value
 
     return output                       #Time -> O(1)   returns the final array
                                         #Total -> O(n+m)
@@ -310,3 +324,4 @@ for _ in range(size):
 print("Unsorted array: ",arr)
 sortedArr = countSort(arr)
 print("Sorted array: ",sortedArr)
+'''
