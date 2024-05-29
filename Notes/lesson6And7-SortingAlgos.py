@@ -88,7 +88,25 @@ Divde and Conquer Algorithm
                 - 
         
         - Counting Sort
+            This is not a divide and conquer algo, it also does NOT use comparisons. It counts the frequency of each value.
+            Uses the highest value as the max. It stores values in a counting array with a size of max+1.
+            It runs through the array and counts how many times the value appears and stores the frequancy in the counting array.
+            The frequency is stored in the respective element. This frequency is then used as the postion for each element in the sorted
+            array. 
 
+            For example:
+            2,3,5,1,3,5,6,0 -> sorted = 0,1,2,3,3,5,5,6
+            max = 6
+            size = 6+1 = 7
+            counting algo [0,1,2,3,4,5,6]
+                          [1,1,1,2,0,2,1] -> for the value 0 it appears only once so in the element index [0] the value is 1
+
+            Advantages 
+                + Faster than all comaprison-based algos
+
+            Disadvantages
+                -
+            
         - Bucket Sort
     
 
@@ -228,7 +246,7 @@ print("Unsorted array: ",arr)
 mergeSort(arr)
 print("Sorted array: ",arr)
 '''
-
+'''
 #Quick Sort ------------------------
 def quickSort(arr,low,high):
     if low<high:                                    #Time -> O(1)
@@ -259,3 +277,36 @@ for _ in range(size):
 print("Unsorted array: ",arr)
 quickSort(arr,0,len(arr)-1)                         #low = 0, high = length of array - 1
 print("Sorted array: ",arr)
+'''
+
+#Counting Sort ---------------------
+def countSort(arr):
+    maxValue = max(arr)                 #Time -> O(1)   max value is the maximum value that appears i nthe array
+    counts =[0]*(maxValue+1)            #Time -> O(m)   creates a counting array
+    output =[0]*len(arr)                #Time -> O(n)   creates a final array
+
+    for num in arr:                     #Time -> O(n)   count occurences of each element
+        counts[num]+=1                  #Time -> O(1)   counts the frequency of each number by incrementing the element[num] with 
+    
+    for i in range(1,maxValue+1):       #Time -> O(m)   update counts to contin the position of each element in the sorted array
+        counts[i] += counts[i-1]        #Time -> O(1)
+
+    for num in reversed(arr):           #Time -> O(n)   build the sorted array
+        output[counts[num]-1] = num     #Time -> O(1)   
+        counts[num] -=1                 #Time -> O(1)
+
+    return output                       #Time -> O(1)   returns the final array
+                                        #Total -> O(n+m)
+
+#arr = [84,39,583,239,542,245,1,69]
+
+size=int(input("Enter the size of the array: "))
+
+arr=[]
+for _ in range(size):
+    value = int(input("Enter a Value: "))
+    arr.append(value)
+
+print("Unsorted array: ",arr)
+sortedArr = countSort(arr)
+print("Sorted array: ",sortedArr)
