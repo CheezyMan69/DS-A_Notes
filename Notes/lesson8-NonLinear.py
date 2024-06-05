@@ -33,8 +33,37 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                 prints/displays the order of the values in that way
 
             Breadth-first-Search Traversal (BFS)
-                Moves from the highest level to the deepest level
-                prints/displays the order of the values in that way
+                Prints the values of each node level by level in the form of a queue:
+                    -  last in first out  (Example to the right of explain)
+                    1. creates a queue with the root first and appends the children to the queue                                                    [R|C1|C2|C3]
+                    2. prints the root and calls the function on C1 (moves it ahead in the queue[popleft()]) so it puts its children in the queue   [C1|C2|C3|C1.1|C1.2]
+                    3. Prints C1 and calls the function on the next in the queue (C2) and repeats                                                   [C2|C3|C1.1|C1.2|C2.1|C2.2]
+                    4. Prints C2 and calls the function on the next in the queue (C3) the same occurs                                               [C3|C1.1|C1.2|C2.1|C2.2|C3.1]   
+                    5. Prints C3 and calls the function on the next in the queue (C1.1) but due to it having no children it prints it and moves on again 
+                       Loop keeps on going until all the queue is finished
+    
+    Properties of a Tree:
+        - Number of Edges
+            An edge is the link between 2 nodes. If a tree has N nodes it will have N-1 edges connecting all of them. There is only one path
+            from each node to any other node in the tree.
+
+        - Depth of a Node
+            The depth is the length from the root to that node (path from root to node). it is calculated using the smallest amount of edges between them,
+            each edge is one unit of length.
+
+        - Height of a Node
+            It is the longest path from the node to a leaf node (path = edges)
+
+        - Height of a Tree
+            The longest path form the root to a leaf node
+
+        - Degree of a Node
+            The total count of subtrees attached to that node. The degree of a leaf node is = 0 and the degree of the tree would be the maximum degree amongst
+            all the nodes
+    
+    Applications of Tree Data Structures:
+        
+
 
 '''
 #Code ------------------------------------------------------------------------------
@@ -84,6 +113,9 @@ root.displayTree()                          #displays the tree from the root so 
 '''
 
 #DFS and BFS Traversal Techniques --
+
+from collections import deque               #For BFS (queue)
+
 class treeNode: 
     def __init__(self,value):
         self.value = value                  #Creats a Node with a value
@@ -94,8 +126,16 @@ class treeNode:
 
     def dfs(self):
         print(self.value, end= ' ')
-        for child in self.children:
+        for child in self.children:         #DFS -> prints the value of the node -> checks for children -> runs dfs on children (repeat)
             child.dfs()
+    
+    def bfs(self):
+        queue = deque([self])
+        while queue:
+            node = queue.popleft()
+            print(node.value, end = ' ')
+            for child in node.children:
+                queue.append(child)
     
 root = treeNode("Root")                     #Root of tree
 child1= treeNode("Child 1")                 #1st child (C1)
@@ -123,3 +163,6 @@ child3.addChild(child3_1)                   #adds the children of C3 to child3 n
 
 print("DFS Traversal : ")
 root.dfs()
+
+print("\nBFS Traversal : ")
+root.bfs()
