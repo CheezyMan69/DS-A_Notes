@@ -52,7 +52,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             each edge is one unit of length.
 
         - Height of a Node
-            It is the longest path from the node to a leaf node (path = edges)
+            It is the longest path from the node to a leaf node (a node without children) (path = edges) 
 
         - Height of a Tree
             The longest path form the root to a leaf node
@@ -70,6 +70,19 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
     Types of Trees:
         This is based on the number of children
         - Binary tree
+            One node has a maximum of 2 children
+            Types of Binary tree:
+                - Full Binary Tree        -> all nodes (other than the leaf nodes) have 2 children
+                - Complete binary Tree    -> All levels are completly filled except the last level which is filled from left to right
+                - Perfect Binary tree     -> All parent nodes have 2 children and all levels are complete from left to right
+                - Incomplete Binary Tree  -> does not fill all the levels
+                - Binary Search Tree(BST) -> A tree that is organized with the left side smaller than the root and specific parent node and the right side is 
+                                             bigger than the root and specific parent node in values
+                - Balanced Binary Tree    -> The height only differs by one between each node
+                - Red Black tree          ->
+                - AVL Tree                ->
+
+
         - Tireachry tree
         - N-ary Tree
 
