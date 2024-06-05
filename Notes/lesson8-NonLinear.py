@@ -133,7 +133,7 @@ child3.addChild(child3_1)                   #adds the children of C3 to child3 n
 root.displayTree()                          #displays the tree from the root so it can display the entire tree
                                             #if displayed from child1 it will only show child1 and its children (subtree of C1 only)
 '''
-
+'''
 #DFS and BFS Traversal Techniques --
 
 from collections import deque               #For BFS (queue)
@@ -188,3 +188,31 @@ root.dfs()
 
 print("\nBFS Traversal : ")
 root.bfs()
+'''
+'''
+#Types of Binary Trees ------------------------------------
+
+class treeNode:
+    def __init__(self,value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+#Full Binary tree ------------------
+def isFullBinaryTree(node):             #a quick checker to see if it is full or not
+    if node is None:
+        return True
+    if node.left is None and node.right is None:        
+        return True
+    if node.left is not None and node.right is not None:
+        return isFullBinaryTree(node.left) and isFullBinaryTree(node.right)
+    return False
+
+root = treeNode(1)
+root.left = treeNode(2)
+root.right = treeNode(3)
+root.left.left = treeNode(4)
+root.left.right = treeNode(5)
+        
+print("Is the tree a Full Binary tree? -> ", isFullBinaryTree(root))
+'''
