@@ -62,7 +62,16 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             all the nodes
     
     Applications of Tree Data Structures:
-        
+        - File System
+        - Data Compression
+        - Compiler Design
+        - NOT FUCKING DONE YET WHY MOVE SO DAMN FAST
+
+    Types of Trees:
+        This is based on the number of children
+        - Binary tree
+        - Tireachry tree
+        - N-ary Tree
 
 
 '''
