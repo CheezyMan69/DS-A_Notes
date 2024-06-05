@@ -120,8 +120,11 @@ Divde and Conquer Algorithm
                 - Not good with big values
                 - Uses extra place in memory 
             
-        - Bucket Sort (will be dealt with next lesson [name of file will not change tho])
-    
+        - Bucket Sort (will not be finished will complete it later)
+            Sorting technique that seperates the array/list into buckets with uniformly distributed elements (same amount of elements in each bucket).
+            Now we can use any other sorting algorithm like bubble sort or insertion sort for example to sort each bucket. Once the buckets are sorted,
+            they are merged into one singular sorted array.
+
 
 '''
 #Code ------------------------------------------------------------------------------
@@ -323,5 +326,43 @@ for _ in range(size):
 
 print("Unsorted array: ",arr)
 sortedArr = countSort(arr)
+print("Sorted array: ",sortedArr)
+'''
+'''
+#Bucket Sort -----------------------
+def bucketSort(arr):
+    bucketCount = len(arr)
+    buckets = [[]for _ in range(bucketCount)]           #creates empty buckets
+
+    minValue = min(arr)
+    maxValue = max(arr)
+    rangeOfBucket = (maxValue - minValue)/bucketCount
+
+    for num in arr:                                     #insertes elements into their buckets
+        index = int((num-minValue)/rangeOfBucket)
+        if index == bucketCount:
+            index -=1
+        buckets[index].append(num)
+
+    for bucket in buckets:
+        bucket.sort()                                   #sorts the buckets
+
+    sortedArray = []
+    for bucket in buckets:
+        sortedArray.extend(bucket)                      #puts all sorted numbers into the sorted array
+
+    return sortedArray
+
+#arr = [84,39,583,239,542,245,1,69]
+
+size=int(input("Enter the size of the array: "))
+
+arr=[]
+for _ in range(size):
+    value = int(input("Enter a Value: "))
+    arr.append(value)
+
+print("Unsorted array: ",arr)
+sortedArr = bucketSort(arr)
 print("Sorted array: ",sortedArr)
 '''
