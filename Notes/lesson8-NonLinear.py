@@ -438,7 +438,7 @@ def insert(root, value):                        #Time Complexity = O(n)
 def search(root,value):
     if root is None or root.value == value:     #if the root value is nothing or is the value we are searching for it will return it
         return root
-    if value < root.values:                     #if the value is less than the root it will search the left part of the tree until it reaches it
+    if value < root.value:                     #if the value is less than the root it will search the left part of the tree until it reaches it
         return search(root.left,value)
     else:                                       #if value is bigger than the root it will search the right part of the tree until it reaches it
         return search(root.right,value)
@@ -449,15 +449,44 @@ def findMin(node):
         current=current.left
     return current
 
-def delete():   #missed this ill do this in a bit
-    pass
+def delete(root,value):
+    if root is None:
+        return root
+    if value < root.value:
+        root.left = delete(root.left,value)
+    elif value > root.value:
+        root.right = delete(root.right,value)
+    else:
+        if root.left is None:
+            return root.right
+        elif root.right is None:
+            return root.left
+        temp = findMin(root.right)
+        root.value = temp.value
+        root.right = delete(root.right,temp.value)
+    return root
+
+def preOrderTrav(root):
+    if root:
+        print(root.value, end=' ')
+        preOrderTrav(root.left)
+        preOrderTrav(root.right)
+
+def inOrderTrav(root):
+    if root:
+        inOrderTrav(root.left)
+        print(root.value, end=' ')
+        inOrderTrav(root.right)
+
+def postOrderTrav(root):
+    if root:
+        postOrderTrav(root.left)
+        postOrderTrav(root.right)
+        print(root.value,end=' ')
 
 root = None
 #values = [8,5,2,7,6,12,9,16,13,10]
 
-#Experimental bullshit give me some time to work on this
-
-# create tree then ask to search or delete not search or make (i will fix it dont worry)
 #kinda behind on the code had to deal with council shit ill catch up
 
 size = int(input("Enter the amount of Nodes in the tree: "))
@@ -470,12 +499,24 @@ for _ in range(size):
 for value in values:
     root = insert(root,value)
 
+printway = input("How would you like this to be printed? (I = Inorder | Pre = Preorder | Po = Postorder): ")
+if printway == 'I' or printway == 'i':
+    print(" ---Inorder Traversal--- ")
+    inOrderTrav(root)
+    print()
+
+if printway == "pre" or printway =="Pre" or printway == "PRE" or printway == "PRe" or printway == "pRE" or printway == "pRe" or printway == "prE":
+    print(" ---Preorder Traversal--- ")
+    preOrderTrav(root)
+    print()
+
+if printway == "po" or printway == "Po" or printway == "pO":
+    print(" ---Postorder Traversal--- ")
+    postOrderTrav(root)
+    print()
 
 searchOrDelete = input("\nSearch or delete? (S or D) ")
-if searchOrDelete == 'S' or 's':
-    for value in values:
-        root = insert(root,value)
-
+if searchOrDelete == "S" or searchOrDelete == "s":
     valueToSearch = int(input("\nEnter a Value you want to search for: "))
     foundNode = search(root,valueToSearch)
     if foundNode:
@@ -483,5 +524,29 @@ if searchOrDelete == 'S' or 's':
     else:
         print("Search for ",valueToSearch," is False/Not Found")
 
-if searchOrDelete == 'D' or 'd':
-    pass
+if searchOrDelete == "D" or searchOrDelete == "d":
+    valueToDelete = int(input("\nEnter a Value you want to delete: "))
+    goneBye = delete(root,valueToDelete)
+    if goneBye:
+        print("Deleted ",valueToDelete)
+    else:
+        print("Failed to delete ",valueToDelete," -> (it no exist boss)")
+    printway = input("How would you like this to be printed? (I = Inorder | Pre = Preorder | Po = Postorder): ")
+    if printway == 'I' or printway == 'i':
+        print(" ---Inorder Traversal--- ")
+        inOrderTrav(root)
+        print()
+
+    if printway == "pre" or printway =="Pre" or printway == "PRE" or printway == "PRe" or printway == "pRE" or printway == "pRe" or printway == "prE":
+        print(" ---Preorder Traversal--- ")
+        preOrderTrav(root)
+        print()
+
+    if printway == "po" or printway == "Po" or printway == "pO":
+        print(" ---Postorder Traversal--- ")
+        postOrderTrav(root)
+        print()
+
+else:
+    print("so you dont want to do shit got it bye bitch")
+
