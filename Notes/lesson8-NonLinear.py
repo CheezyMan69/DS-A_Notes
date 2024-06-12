@@ -98,6 +98,25 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                         left -> right -> current
                 - BFS: 
                     - Level Order Traversal
+            
+            Advantages
+                + Efficient Search -> O(n)
+                + Memory Efficient
+                + Easy to implement -> only 2 children
+
+            Disadavantages (will finish later)
+                - 
+
+            Applications (will also finish later)
+                = 
+
+            Binary Search Tree (BST):
+                This is a type of binary tree that splits values by how big or small they are compared to the root node
+                - On the left of the root we will find values less than the root value
+                - on the right of the root we will find values more than the root value
+                This process subs the parent node instead of the root node if there are more values and then contiues to sort
+
+                A BST handles duplicates 
 
 
 
@@ -315,7 +334,7 @@ class treeNode:
         self.left = None
         self.right = None
 
-def insert(root, value):
+def insert(root, value):                        #Time Complexity = O(n)
     if root is None:                            #if the root is none the first value will be the root value
         return treeNode(value)
     if value< root.value:
@@ -325,26 +344,26 @@ def insert(root, value):
     return root
 
 #DFS Traversal ways ----------------
-def preOrderTrav(root):
+def preOrderTrav(root):                         #Time -> O(n)
     if root:
         print(root.value, end=' ')
         preOrderTrav(root.left)                 #current -> left -> right
         preOrderTrav(root.right)
 
-def inOrderTrav(root):
+def inOrderTrav(root):                          #Time -> O(n)
     if root:
         inOrderTrav(root.left)
         print(root.value, end = ' ')            #left -> current -> right
         inOrderTrav(root.right)
 
-def postOrderTrav(root):
+def postOrderTrav(root):                        #Time -> O(n)
     if root:
         postOrderTrav(root.left)
         postOrderTrav(root.right)               #left -> right -> current
         print(root.value, end=' ')
 
 #BFS Traversal way -----------------
-from collections import deque
+from collections import deque                   #Time -> O(n)
 def levelOrderTrav(root):
     if root is None:
         return
@@ -366,10 +385,10 @@ def levelOrderTrav(root):
 #      / \      /  \ 
 #     3   7    12  18
 #
-size = int(input("Enter the amount of values in the tree: "))
+size = int(input("Enter the amount of Nodes in the tree: "))
 values=[]
 
-rootVal = int(input("Insert the root value: "))
+rootVal = int(input("Insert the Root value: "))
 root = treeNode(rootVal)
 
 for _ in range(size-1):
