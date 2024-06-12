@@ -240,7 +240,7 @@ print("Is the tree a Full Binary tree? -> ", isFullBinaryTree(root))
 from collections import deque
 
 class treeNode:
-    def __init__(self,value):           #Initiates Binary Search Tree (BST)
+    def __init__(self,value):           
         self.value = value
         self.left = None
         self.right = None
@@ -275,7 +275,7 @@ print("is it a complete biary tree? ",isCompBinaryTree(root))
 '''
 #Perfect Binary Tree ---------------
 class treeNode:
-    def __init__(self,value):           #Initiates Binary Search Tree (BST)
+    def __init__(self,value):           
         self.value = value
         self.left = None
         self.right = None
@@ -308,3 +308,90 @@ depth = findDepth(root)
 print("is perfect Binary tree? ", isPerfectBinTree(root,depth))
 '''
 
+#Binary Tree Operations -----------------------------------
+class treeNode:
+    def __init__(self,value):          
+        self.value = value
+        self.left = None
+        self.right = None
+
+def insert(root, value):
+    if root is None:                            #if the root is none the first value will be the root value
+        return treeNode(value)
+    if value< root.value:
+        root.left = insert(root.left, value)    #if there is a value in root and the value is more it will insert it in the left node
+    else:
+        root.right = insert(root.right, value)  #if the value is smaller than the root it will insert in the right node
+    return root
+
+#DFS Traversal ways ----------------
+def preOrderTrav(root):
+    if root:
+        print(root.value, end=' ')
+        preOrderTrav(root.left)                 #current -> left -> right
+        preOrderTrav(root.right)
+
+def inOrderTrav(root):
+    if root:
+        inOrderTrav(root.left)
+        print(root.value, end = ' ')            #left -> current -> right
+        inOrderTrav(root.right)
+
+def postOrderTrav(root):
+    if root:
+        postOrderTrav(root.left)
+        postOrderTrav(root.right)               #left -> right -> current
+        print(root.value, end=' ')
+
+#BFS Traversal way -----------------
+from collections import deque
+def levelOrderTrav(root):
+    if root is None:
+        return
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        print(node.value, end = ' ')
+        if  node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+
+#root = treeNode(10)
+#values = [5,15,3,7,12,18]
+#
+#           10
+#        /      \
+#       5        15
+#      / \      /  \ 
+#     3   7    12  18
+#
+size = int(input("Enter the amount of values in the tree: "))
+values=[]
+
+rootVal = int(input("Insert the root value: "))
+root = treeNode(rootVal)
+
+for _ in range(size-1):
+    value = int(input("Insert value: "))
+    values.append(value)
+
+for value in values:
+    root = insert(root, value)
+
+
+print(" ---Preorder Traversal--- ")
+preOrderTrav(root)
+print()
+
+print(" ---Inorder Traversal--- ")
+inOrderTrav(root)
+print()
+
+print(" ---Postorder Traversal--- ")
+postOrderTrav(root)
+print()
+
+print(" ---Level Order Traversal--- ")
+levelOrderTrav(root)
+print()
