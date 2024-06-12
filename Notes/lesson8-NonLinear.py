@@ -121,7 +121,10 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
 
 
         - Tireachry tree
-        - N-ary Tree
+            A tree where the parents have 3 children max
+
+        - Generic or N-ary Tree
+            A tree where the parents can have as many children as they want (boomers)
 
 
 '''
@@ -326,7 +329,7 @@ root.right.right = treeNode(7)
 depth = findDepth(root)
 print("is perfect Binary tree? ", isPerfectBinTree(root,depth))
 '''
-
+'''
 #Binary Tree Operations -----------------------------------
 class treeNode:
     def __init__(self,value):          
@@ -380,7 +383,7 @@ def levelOrderTrav(root):
 #values = [5,15,3,7,12,18]
 #
 #           10
-#        /      \
+#        /      \   
 #       5        15
 #      / \      /  \ 
 #     3   7    12  18
@@ -414,3 +417,71 @@ print()
 print(" ---Level Order Traversal--- ")
 levelOrderTrav(root)
 print()
+'''
+
+#Binary Search Tree -----------------------------
+class treeNode:
+    def __init__(self,value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def insert(root, value):                        #Time Complexity = O(n)
+    if root is None:                            #if the root is none the first value will be the root value
+        return treeNode(value)
+    if value< root.value:
+        root.left = insert(root.left, value)    #if there is a value in root and the value is more it will insert it in the left node
+    else:
+        root.right = insert(root.right, value)  #if the value is smaller than the root it will insert in the right node
+    return root
+
+def search(root,value):
+    if root is None or root.value == value:     #if the root value is nothing or is the value we are searching for it will return it
+        return root
+    if value < root.values:                     #if the value is less than the root it will search the left part of the tree until it reaches it
+        return search(root.left,value)
+    else:                                       #if value is bigger than the root it will search the right part of the tree until it reaches it
+        return search(root.right,value)
+    
+def findMin(node):
+    current = node
+    while current.left is not None:
+        current=current.left
+    return current
+
+def delete():   #missed this ill do this in a bit
+    pass
+
+root = None
+#values = [8,5,2,7,6,12,9,16,13,10]
+
+#Experimental bullshit give me some time to work on this
+
+# create tree then ask to search or delete not search or make (i will fix it dont worry)
+#kinda behind on the code had to deal with council shit ill catch up
+
+size = int(input("Enter the amount of Nodes in the tree: "))
+values=[]
+
+for _ in range(size):
+    value = int(input("Insert value: "))
+    values.append(value)
+
+for value in values:
+    root = insert(root,value)
+
+
+searchOrDelete = input("\nSearch or delete? (S or D) ")
+if searchOrDelete == 'S' or 's':
+    for value in values:
+        root = insert(root,value)
+
+    valueToSearch = int(input("\nEnter a Value you want to search for: "))
+    foundNode = search(root,valueToSearch)
+    if foundNode:
+        print("Search for ",valueToSearch," is True")
+    else:
+        print("Search for ",valueToSearch," is False/Not Found")
+
+if searchOrDelete == 'D' or 'd':
+    pass
