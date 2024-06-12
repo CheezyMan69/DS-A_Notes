@@ -9,6 +9,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             They are the nodes that give access to the next level (to their children)
         - Child Nodes
             They are the nodes 
+        (not done yet)
 
     Each tree consists of a root node and sub trees - children and parents.
     A node consits of the data inside it and its child nodes.
@@ -70,7 +71,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
     Types of Trees:
         This is based on the number of children
         - Binary tree
-            One node has a maximum of 2 children
+            One Parent node has a maximum of 2 children
             Types of Binary tree:
                 - Full Binary Tree        -> all nodes (other than the leaf nodes) have 2 children
                 - Complete binary Tree    -> All levels are completly filled except the last level which is filled from left to right
@@ -78,9 +79,11 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                 - Incomplete Binary Tree  -> does not fill all the levels
                 - Binary Search Tree(BST) -> A tree that is organized with the left side smaller than the root and specific parent node and the right side is 
                                              bigger than the root and specific parent node in values
-                - Balanced Binary Tree    -> The height only differs by one between each node
-                - Red Black tree          ->
-                - AVL Tree                ->
+                - Balanced Binary Tree    -> The height of left and right subtrees only differs by one between each node
+                - Red Black tree          -> Self balancing binary search tree where the nodes are coloured red or black to make sure that it is balanced when
+                                             deleting or insertion 
+                - AVL Tree                -> Also a self balancing binary search tree where the diffrence between left and right subtrees cannot be more than
+                                             one for all nodes
 
 
         - Tireachry tree
@@ -208,11 +211,48 @@ def isFullBinaryTree(node):             #a quick checker to see if it is full or
         return isFullBinaryTree(node.left) and isFullBinaryTree(node.right)
     return False
 
-root = treeNode(1)
-root.left = treeNode(2)
-root.right = treeNode(3)
-root.left.left = treeNode(4)
-root.left.right = treeNode(5)
-        
+root = treeNode(1)                 #             1
+root.left = treeNode(2)            #           /   \    
+root.right = treeNode(3)           #          2     3
+root.left.left = treeNode(4)       #         / \     
+root.left.right = treeNode(5)      #        4   5     
+
 print("Is the tree a Full Binary tree? -> ", isFullBinaryTree(root))
 '''
+
+#Complete Binary Tree --------------
+
+from collections import deque
+
+class treeNode:
+    def __init__(self,value):           #Initiates Binary Search Tree (BST)
+        self.value = value
+        self.left = None
+        self.right = None
+
+def isCompBinaryTree(root):             #[WRONG fucking checker (fun) will change later]
+    if not root:
+        return True
+    queue = deque([root])
+    reachedEnd = False
+    while queue:
+        node = queue.popleft()          #same logic as the Breadth first Search using queues
+        if node:                        #uses queues and if the value = none then reachedEnd = True 
+            if reachedEnd:              #if there was a value after reachedEnd is True the func will return false because leafs not on
+                                        #the same level
+                return False            
+            queue.append(node.left)
+            queue.append(node.right)
+        else:
+            reachedEnd = True           
+    return True
+
+root = treeNode(1)                 #             1
+root.left = treeNode(2)            #           /   \    
+root.right = treeNode(3)           #          2     3
+root.left.left = treeNode(4)       #         / \     \  
+root.left.right = treeNode(5)      #        4   5     6
+root.right.left = treeNode(6)      #
+
+
+print("is it a complete biary tree? ",isCompBinaryTree(root))
