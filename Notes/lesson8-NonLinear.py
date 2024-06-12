@@ -27,11 +27,11 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                     2. checks if the first child has children and if so it will move to their first child  (C1 -> C1.1)
                     3. once there are no more children it will go to the sibling node (a node with the same parent on the same level) (C1.1 -> C1.2)
                     4. when there are no more siblings on that level it will go back to the parent node's level and move to their siblings and the process
-                       repeats itself (R->C1->C1.1->C1.2->C2->C2.1->C2.2->C3->3.1)
+                       repeats itself (R->C1->C1.1->C1.2->C2->C2.1->C2.2->C3->C3.1)
 
                 Explores to the deepest level of the branch before it back tracks to the next branch
 
-                prints/displays the order of the values in that way
+                Ways of printing this Traversal depends on the type of tree
 
             Breadth-first-Search Traversal (BFS)
                 Prints the values of each node level by level in the form of a queue:
@@ -84,6 +84,21 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                                              deleting or insertion 
                 - AVL Tree                -> Also a self balancing binary search tree where the diffrence between left and right subtrees cannot be more than
                                              one for all nodes
+
+            Binary Operations:
+                - Create -> creating a tree in the data structure
+                - Insert -> Inserts data into the tree
+                - Search -> Searches the tree to find specifc data
+                - DFS:
+                    - Pre order Traversal:
+                        current -> left -> right 
+                    - Inorder Traversal
+                        left -> current -> right
+                    - Postorder Traversal
+                        left -> right -> current
+                - BFS: 
+                    - Level Order Traversal
+
 
 
         - Tireachry tree
@@ -219,7 +234,7 @@ root.left.right = treeNode(5)      #        4   5
 
 print("Is the tree a Full Binary tree? -> ", isFullBinaryTree(root))
 '''
-
+'''
 #Complete Binary Tree --------------
 
 from collections import deque
@@ -247,12 +262,49 @@ def isCompBinaryTree(root):             #[WRONG fucking checker (fun) will chang
             reachedEnd = True           
     return True
 
-root = treeNode(1)                 #             1
-root.left = treeNode(2)            #           /   \    
-root.right = treeNode(3)           #          2     3
-root.left.left = treeNode(4)       #         / \     \  
-root.left.right = treeNode(5)      #        4   5     6
+root = treeNode(1)                 #              1
+root.left = treeNode(2)            #           /     \    
+root.right = treeNode(3)           #          2       3
+root.left.left = treeNode(4)       #         / \     /   
+root.left.right = treeNode(5)      #        4   5   6  
 root.right.left = treeNode(6)      #
 
 
 print("is it a complete biary tree? ",isCompBinaryTree(root))
+'''
+'''
+#Perfect Binary Tree ---------------
+class treeNode:
+    def __init__(self,value):           #Initiates Binary Search Tree (BST)
+        self.value = value
+        self.left = None
+        self.right = None
+
+def isPerfectBinTree(node,depth,level=0):
+    if node is None:
+        return True
+    if node.left is None and node.right is None:
+        return depth == level+1
+    if node.left is None or node.right is None:
+        return False
+    return isPerfectBinTree(node.left,depth,level+1) and isPerfectBinTree(node.right,depth, level+1)
+
+def findDepth(node):
+    d = 0 
+    while node is not None:
+        d+=1
+        node = node.left
+    return d
+
+root = treeNode(1)                 #              1
+root.left = treeNode(2)            #           /     \    
+root.right = treeNode(3)           #          2       3
+root.left.left = treeNode(4)       #         / \     / \  
+root.left.right = treeNode(5)      #        4   5   6   7   
+root.right.left = treeNode(6)      #
+root.right.right = treeNode(7)
+
+depth = findDepth(root)
+print("is perfect Binary tree? ", isPerfectBinTree(root,depth))
+'''
+
