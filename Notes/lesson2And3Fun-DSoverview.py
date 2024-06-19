@@ -26,7 +26,7 @@ Data Structures in Python -
     - Lists = changable (mutable), uses [], (Dynamic Arrays)
     - Tuples = cannot be changed later on (immutable), uses (), for fixed values (use when you dont want to change data again)
     - Dictionaries = uses a key, contains any data type, changable (mutable), uses{}
-    - Sets = size is mutable but elements are immutable, uses {}, fixed values but growing size
+    - Sets = size is mutable but elements are immutable, uses {}, fixed values but growing size, no duplicate elements
     - Arrays
 '''
 '''
