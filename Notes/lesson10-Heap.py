@@ -16,8 +16,12 @@ Heap Data Structures:
         - Heap is ordered, a normal tree is not
         - Insert and remove takes O(log n) due to the sorting and a tree only takes O(n)
         - finding max/min is O(1) due to it being the root and in a tree it takes O(log n) due to searching
-        - Heap can also be referred to as PRIORITY QUEUE (a tree is a connec)
-        - 
+        - Heap can also be referred to as PRIORITY QUEUE (a tree is a connected undirected graph with no circle [more on that later])
+        - Heap is built faster than trees
+        
+    - Applications of Heap Data Structures
+        - Prim's Algorithm (fuck this man[hate it{very not fun}]) (some shit to do with distance and traversal)
+        - Dijkstra's Algorithm
 
 
 
