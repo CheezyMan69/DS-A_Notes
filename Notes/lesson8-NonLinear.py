@@ -121,10 +121,11 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
 
 
         - Tireachry tree
-            A tree where the parents have 3 children max
+            A tree where the parents have 3 children max    (self study will do soon [let me get stats done first])
+                - Same concept lol
 
         - Generic or N-ary Tree
-            A tree where the parents can have as many children as they want (boomers)
+            A tree where the parents can have as many children as they want (boomers)   (same here boss after stats)
 
 
 '''
