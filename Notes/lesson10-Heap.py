@@ -69,6 +69,34 @@ class maxHeap:
         if largest != index:                            #if the largest node now (after the checks) is not the parent node anymore, the nodes will swap to keep the heap property
             self.heap[index], self.heap[largest] = self.heap[largest], self.heap[index]
 
+    def extractMax(self):
+        if len(self.heap) == 0:                         #if the length of the array 0 then it does not work
+            return None
+        if len(self.heap) == 1:                         #if the length of the array is equvilant to 1 it will extract the first value
+            return self.heap.pop()
+        maxValue = self.heap[0]                         #if the length is more than 1, the max value becomes the first value (root)
+        self.heap[0] = self.heap.pop()                  #then the root is extracted/deleted from the array
+        self._bubbleDown(0)                             #then the bubble down is called to sort the heap once more
+        return maxValue                                 #returns the max value which was the previous root
+    
+    def peek(self):                                     #this function looks (takes a peek at) the maximum value
+        return self.heap[0] if self.heap else None      #return the root if the heap exists and if it does not then return nothing (None)
+    
+    def delete(self,value):
+        try:                                            #Attepmts the code in the try block and if there is an error (anywhere) it will move to another code (catch block [in python its except])
+                                                        #the catch block (except in python) will handle the error accordingly (telling the user to try again for example [its another code that you write])
+            index = self.heap.index(value)              #index becomes the index of the value entered
+            if index == len(self.heap) -1:              #if the index is equivilant to the length of the heap (array) -1 (the last element) it will delete it
+                self.heap.pop()
+            else:
+                self.heap[index] = self.heap.pop()      #if not last element it will delete the value entered
+                if index < len(self.heap):              # if the index is less than the length it will heapify again to sort the heap properly
+                    self._bubbleDown(index)
+                    self._bubbleUp(index)
+        except ValueError:                              #if the value does not exist it will skip the try block and execute the code in the except block
+            print("Value ", value," was not found in the heap ")
+            
+
     def __str__(self):
         return str(self.heap)
     
