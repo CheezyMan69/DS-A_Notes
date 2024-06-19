@@ -20,12 +20,24 @@ Heap Data Structures:
         - Heap is built faster than trees
         
     - Applications of Heap Data Structures
-        - Prim's Algorithm (fuck this man[hate it{very not fun}]) (some shit to do with distance and traversal)
         - Dijkstra's Algorithm
+        - Heapsort algo
+        - Memory Managment
+        - Graph Algorithms
+            + Prim's Algorithm (fuck this man[hate it{very not fun}]) (some shit to do with distance and traversal)
+        - Job Schedualing 
+        - more will be added later (give me time)
 
-
-
-
+    + Advantages 
+        + Efficient insertion and deletion
+        + 
+    
+    - Disadvantages
+        - Not flexiable -> only a specific order
+        - Not for searching 
+        - Not stable structure -> the order is not preserved
+        - Memory managment -> error prone
+        - Complexity -> O(n log n)
 '''
 #CODE AGAIN -------------------------------------------------------------------
 
