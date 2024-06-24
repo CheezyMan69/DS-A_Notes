@@ -422,12 +422,12 @@ print()
 
 #Binary Search Tree -----------------------------
 class treeNode:
-    def __init__(self,value):
-        self.value = value
+    def __init__(self,value):                   #Initializes (constructs) the tree
+        self.value = value      
         self.left = None
         self.right = None
 
-def insert(root, value):                        #Time Complexity = O(n)
+def insert(root, value):                        #Time Complexity = O(n)     Inserts values into the tree
     if root is None:                            #if the root is none the first value will be the root value
         return treeNode(value)
     if value< root.value:
@@ -436,51 +436,51 @@ def insert(root, value):                        #Time Complexity = O(n)
         root.right = insert(root.right, value)  #if the value is smaller than the root it will insert in the right node
     return root
 
-def search(root,value):
+def search(root,value):                         #Searches the tree to fina a specific value
     if root is None or root.value == value:     #if the root value is nothing or is the value we are searching for it will return it
         return root
-    if value < root.value:                     #if the value is less than the root it will search the left part of the tree until it reaches it
+    if value < root.value:                      #if the value is less than the root it will search the left part of the tree until it reaches it
         return search(root.left,value)
     else:                                       #if value is bigger than the root it will search the right part of the tree until it reaches it
         return search(root.right,value)
     
-def findMin(node):
-    current = node
-    while current.left is not None:
-        current=current.left
-    return current
+def findMin(node):                              #this function is too find the last node in the tree
+    current = node                              #makes the current node the root
+    while current.left is not None:             #while the node.left is not empty the current becomes the left then checks again 
+        current=current.left                    #then repeats the process until left is none (current for example can be current.left.left.left)
+    return current                              #once the while loop is over it returns the final current
 
-def delete(root,value):
-    if root is None:
+def delete(root,value):                         #To delete specific values
+    if root is None:                            #If the root is empty it will not delete anything and returns the empty root
         return root
-    if value < root.value:
-        root.left = delete(root.left,value)
-    elif value > root.value:
+    if value < root.value:                      #if the value is lower than the root then it will search for the value in root.left
+        root.left = delete(root.left,value)     
+    elif value > root.value:                    #if the value is larger than the root then it will search for the value in root.right
         root.right = delete(root.right,value)
     else:
-        if root.left is None:
+        if root.left is None:                   #if root.left is empty it will return the root.right and vice versa
             return root.right
         elif root.right is None:
             return root.left
-        temp = findMin(root.right)
-        root.value = temp.value
-        root.right = delete(root.right,temp.value)
-    return root
+        temp = findMin(root.right)              #a temp variable is used to hold the min node root.right
+        root.value = temp.value                 #the specific root's value becomes the temp value 
+        root.right = delete(root.right,temp.value)  #this calls the function again but this time with the root and the temp value to remove them
+    return root                                 #returns the root
 
 def preOrderTrav(root):
-    if root:
+    if root:                                    #if root is not empty it displays like this: C->L->R
         print(root.value, end=' ')
         preOrderTrav(root.left)
         preOrderTrav(root.right)
 
 def inOrderTrav(root):
-    if root:
+    if root:                                    #if root is not empty it displays like this: L->C->R
         inOrderTrav(root.left)
         print(root.value, end=' ')
         inOrderTrav(root.right)
 
 def postOrderTrav(root):
-    if root:
+    if root:                                    #if root is not empty it displays like this: L->R->C
         postOrderTrav(root.left)
         postOrderTrav(root.right)
         print(root.value,end=' ')
