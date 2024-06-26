@@ -38,11 +38,12 @@ Graphs
         Prim's algorithm:
             Minimum spaning tree
             All the node must be connected with the lowest weight total (shortest path) AND must not have a cycle
+            Used mainly in Networking
+        
+
 
                 
-
-
-
+            
 '''
 #IM LATE WITH CODE FUUUUCK ----------------------------------------------------
 '''
@@ -166,9 +167,9 @@ class graph:
 
 #Prim's Algo ----------------
     def prims(self, start):
-        mst = []
-        visited = set()
-        minHeap = [(0,start,None)]
+        mst = []                                                #Creates list                  
+        visited = set()                                         #creates set
+        minHeap = [(0,start,None)]                              #min heap
 
         while minHeap:
             weight, currentVer, fromVer = heapq.heappop(minHeap)
