@@ -185,11 +185,11 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                 - Search -> Searches the tree to find specifc data
                 - DFS:
                     - Pre order Traversal:
-                        current -> left -> right 
+                        current -> left -> middle -> right 
                     - Inorder Traversal
-                        left -> current -> right
+                        left -> middle -> current -> right
                     - Postorder Traversal
-                        left -> right -> current
+                        left -> middle -> right -> current
                 - BFS: 
                     - Level Order Traversal
 
@@ -489,7 +489,7 @@ print(" ---Level Order Traversal--- ")
 levelOrderTrav(root)
 print()
 '''
-
+'''
 #Binary Search Tree -----------------------------
 class treeNode:
     def __init__(self,value):                   #Initializes (constructs) the tree
@@ -506,7 +506,7 @@ def insert(root, value):                        #Time Complexity = O(n)     Inse
         root.right = insert(root.right, value)  #if the value is smaller than the root it will insert in the right node
     return root
 
-def search(root,value):                         #Searches the tree to fina a specific value
+def search(root,value):                         #Searches the tree to find a specific value
     if root is None or root.value == value:     #if the root value is nothing or is the value we are searching for it will return it
         return root
     if value < root.value:                      #if the value is less than the root it will search the left part of the tree until it reaches it
@@ -557,8 +557,6 @@ def postOrderTrav(root):
 
 root = None
 #values = [8,5,2,7,6,12,9,16,13,10]
-
-#kinda behind on the code had to deal with council shit ill catch up
 
 size = int(input("Enter the amount of Nodes in the tree: "))
 values=[]
@@ -620,4 +618,72 @@ if searchOrDelete == "D" or searchOrDelete == "d":
 
 else:
     print("so you dont want to do shit got it bye bitch")
+'''
 
+#Ternary Tree Operations -----------
+class treeNode:
+    def __init__(self,value):
+        self.value = value
+        self.left = None
+        self.middle = None
+        self.right = None
+
+def insert(root,value):
+    if root is None:
+        return treeNode(value)
+    if value < root.value:
+        root.left = insert(root.left, value)
+    elif value >root.value:
+        root.right = insert(root.right, value)
+    else:
+        root.middle = insert(root.middle,value)
+    return root
+
+def search(root,value):
+    if root is None or root.value == value:
+        return root
+    if value<root.value:
+        return search(root.left,value)
+    else:
+        return search(root.right,value)
+    
+def preTrav(root):
+    if root:
+        print(root.value, end=' ')
+        preTrav(root.left)
+        preTrav(root.middle)
+        preTrav(root.right)
+
+def inTrav(root):
+    if root:
+        inTrav(root.left)
+        inTrav(root.middle)
+        print(root.value,end=' ')
+        inTrav(root.right)
+
+def postTrav (root):
+    if root:
+        postTrav(root.left)
+        postTrav(root.middle)
+        postTrav(root.right)
+        print(root.value, end=' ')
+
+size = int(input("Enter the total number of nodes in the Tree: "))
+
+root = None
+values = []
+for _ in range(size):
+    value = int(input("Insert Value: "))
+    values.append(value)
+
+print(values)
+
+for value in values:
+    root = insert(root,value)
+
+print(" ---Pre Trav--- ")
+print(preTrav(root))
+print(" ---In Trav--- ")
+print(inTrav(root))
+print(" ---Post Trav--- ")
+print(postTrav(root))
