@@ -18,6 +18,7 @@ Oral: 50%
 Written: 50%
 
     OPEN BOOK (DO NOT USE ANY AI EXTENSIONS AND NO GOOGLE OR AI)
+        - if you are using my notes for this exam, make sure to download them to avoid any complications with prof (plz)
     
     Will be given a question and will have to code an algorithm accordingly
     There will also be MCQs
