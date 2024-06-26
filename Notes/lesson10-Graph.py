@@ -25,8 +25,21 @@ Graphs
             + BFS
     
     Applications of Graph Data Structures:
+        Dijkstra's algorigm:
+            Used to find the shortest path from the start vertex to the end vertex
+            Used in google maps and networking routes 
+            ONLY USED WHEN WEIGHT IS ALL POSITIVE
+            Heap Sort is used for this algo to work
+                - using min heap 
+                - it will check the vertex's neighbours and the weights between them
+                - it will then extract the min value between the weights and use that edge to move 
+                - To avoid reprocessing it will use a set that keeps track of all vertices that we visited
 
+        Prim's algorithm:
+            Minimum spaning tree
+            All the node must be connected with the lowest weight total (shortest path) AND must not have a cycle
 
+                
 
 
 
@@ -151,11 +164,67 @@ class graph:
         for node in self.graph:                 #for each node in the graph it will print 
             print(f"{node} -> {self.graph[node]}")
 
+#Dijkstra Algo --------------
+import heapq 
+
+def dijkstra(graph,start):
+    queue = []                                                  #Creates a queue list
+    heapq.heappush(queue,(0,start))                             
+    distances = {vertex: float('inf') for vertex in graph}      #creates a dictionary with a vertex key for each vertex in the graph with a float value inside  
+    distances[start] = 0                                        #gives the key start a value of 0
+    visited = set()                                             #creates a set called visited
+
+    while queue:                                                #while the queue is true
+        currentDis, currentVer = heapq.heappop(queue)           #added the current distance and the vertex to the queue
+        if currentVer in visited:                               #if the current vertex is in visted then continue 
+            continue
+        visited.add(currentVer)                                 #if not in visited then add the vertex to visited
+
+        for neighbour, weight in graph[currentVer]:             #for each neightbour and weight in key currentVer
+            distance = currentDis + weight                      #distance is calculated as the current distance + the weight of the new edge
+            if distance < distances[neighbour]:                 #if the distance calculated is less then the distance already calculated 
+                distances[neighbour] = distance                 #then it will be the new distance
+                heapq.heappush(queue, (distance,neighbour))     
+    return distances                                            #returns the distances dictionary
+
+#Prim's Algo ----------------
+def prims(graph, start, end):
+    pass
+
+#Dijkstra Example -----------
 g = graph()
-g.addEdge('A','B',1)
-g.addEdge('A','C',4)
-g.addEdge('B','C',2)
-g.addEdge('B','D',5)
-g.addEdge('C','D',1)
+g.addEdge('A','B',6)
+g.addEdge('A','C',2)
+g.addEdge('B','D',8)
+g.addEdge('C','D',5)
+g.addEdge('D','E',10)
+g.addEdge('D','F',15)
+g.addEdge('E','G',2)
+g.addEdge('F','G',6)
 
 g.printGraph()
+
+print(dijkstra(g.graph, 'A'))
+
+
+#Prim Example ---------------
+g = graph()
+g.addEdge('A','B',4)
+g.addEdge('A','H',8)
+g.addEdge('B','C',8)
+g.addEdge('B','H',11)
+g.addEdge('C','I',2)
+g.addEdge('C','F',4)
+g.addEdge('C','D',7)
+g.addEdge('D','F',14)
+g.addEdge('D','E',7)
+g.addEdge('E','F',10)
+g.addEdge('F','G',2)
+g.addEdge('G','H',1)
+g.addEdge('G','I',6)
+g.addEdge('H','I',7)
+
+g.printGraph()
+
+
+#print(prims(g.graph, 'A'))
