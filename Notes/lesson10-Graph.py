@@ -32,8 +32,8 @@ Graphs
 
 '''
 #IM LATE WITH CODE FUUUUCK ----------------------------------------------------
-
-#Graph DS Operations
+'''
+#Graph DS Operations ---------------
 class graph:
     def __init__(self):
         self.graph = {}                         #Creates the graph (constructor) into a dictionary 
@@ -82,29 +82,29 @@ def bfs(graph, start):
                 visited.add(neighbor)
                 queue.append(neighbor)
 
-def hasCycle(graph, vertex, visited, parent):
-    visited.add(vertex)
-    for neighbour in graph[vertex]:
-        if neighbour not in visited:
+def hasCycle(graph, vertex, visited, parent):   #Checks if there is a cycle
+    visited.add(vertex)                         #addes the veertex to the set of visited
+    for neighbour in graph[vertex]:             #for every neighbour of the specific vertex/node
+        if neighbour not in visited:            #it will check if it is not in visited and - if not - recall the func to do it again
             if hasCycle(graph, vertex, visited, parent):
+                return True                     #if the func is true it will return true
+            elif parent != neighbour:           #if the func is false but the parent is not a neighbour then it will return true
                 return True
-            elif parent != neighbour:
-                return True
-        return False
+        return False                            #if neither requirments are met  it will return false
     
 def containsCycle(graph):
-    visited = set()
-    for vertex in graph:
-        if vertex not in visited:
+    visited = set()                             #Creates a set called Visited
+    for vertex in graph:                        #for every node in the graph
+        if vertex not in visited:               #if the vertex/node is not in the visited it will call the hasCycle func
             if hasCycle(graph,vertex,visited,None):
-                return True
-        return False
+                return True                     #if the func returns true then there is a cycle and it returns true    
+        return False                            #If the func is not true it will return false and that means there is no cycle
     
 def shortestPath(graph, start, goal):
-    visited = set()
-    queue = deque([(start, [start])])
-    while queue:
-        (vertex, path) = queue.popleft()
+    visited = set()                             #creats a set called visited
+    queue = deque([(start, [start])])           #creates a queue
+    while queue:                                #while the queue is active 
+        (vertex, path) = queue.popleft()        #it addes the vertex
         for neighbour in graph[vertex]:
             if neighbour not in visited:
                 if neighbour == goal:
@@ -129,3 +129,33 @@ dfs(g.graph,'A')
 print()
 print(" ---BFS Trav--- ")
 bfs(g.graph,'A')
+
+print("Does this graph contains a cycle? ", containsCycle(g.graph))
+print("")
+'''
+
+#Weighted Graphs -------------------
+class graph:
+    def __init__(self):
+        self.graph = {}                         #creates a dictionary            
+
+    def addEdge(self, u, v, weight):            #creates an edge by connecting 2 nodes (u and v) and giving a weight 
+        if u not in self.graph:                 #if u not in the graph then it makes a list under the u key
+            self.graph[u]= []
+        if v not in self.graph:                 #if v not in the graph then it makes a list under the v key
+            self.graph[v] = []
+        self.graph[u].append((v, weight))       #append 2 values under the u key and they are the node v and the weight between them
+        self.graph[v].append((u, weight))       #appends 2 values under the v key and they are the node u and the weight between them
+    
+    def printGraph(self):                       #prints out the graph in a specific way
+        for node in self.graph:                 #for each node in the graph it will print 
+            print(f"{node} -> {self.graph[node]}")
+
+g = graph()
+g.addEdge('A','B',1)
+g.addEdge('A','C',4)
+g.addEdge('B','C',2)
+g.addEdge('B','D',5)
+g.addEdge('C','D',1)
+
+g.printGraph()
