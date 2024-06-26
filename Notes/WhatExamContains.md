@@ -1,16 +1,17 @@
 Oral:
     NOT OPEN BOOK
-    time and space complexity in snippet of code given:
-        - Big O
-        - Big theta
-        - Big omega
 
     The Oral will Contain:
+        - Explaining the concept and steps of an algo in a snippet of code given
+        - Expalining time and space complexity in snippet of code given:
+            - Big O
+            - Big theta     (ALL BIG NOTATION WILL BE ASKED FOR EACH TIME AND SPACE)
+            - Big omega
         - all of non-linear
         - all of sorting
         - (a test to show understanding of concepts)
     
-    will be in groups (2 each)
+    will be in groups (2 each [will be chosen by prof])
     15mins per group
 
 Written:
