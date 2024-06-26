@@ -120,11 +120,19 @@ Divde and Conquer Algorithm
                 - Not good with big values
                 - Uses extra place in memory 
             
-        - Bucket Sort (will not be finished will complete it later)
+        - Bucket Sort
             Sorting technique that seperates the array/list into buckets with uniformly distributed elements (same amount of elements in each bucket).
             Now we can use any other sorting algorithm like bubble sort or insertion sort for example to sort each bucket. Once the buckets are sorted,
             they are merged into one singular sorted array.
 
+            Advantages
+                + Buckets are sorted and processed independendly meaning they do not take a lot of time 
+                + Time Complexity -> O(n+m) {if linked list then O(n*n)}
+                + Stable Algorithm
+
+            Disadvantages
+                - Mainly used for samll data sets or evenly distributed data sets so the bigger the data sets the less effcient the sort is
+                - The technique of sorting (splitting into buckets) does not work for all data types
 
 '''
 #Code ------------------------------------------------------------------------------
@@ -328,30 +336,30 @@ print("Unsorted array: ",arr)
 sortedArr = countSort(arr)
 print("Sorted array: ",sortedArr)
 '''
-'''
+
 #Bucket Sort -----------------------
 def bucketSort(arr):
-    bucketCount = len(arr)
+    bucketCount = len(arr)                              #finds the length of the array to later on use it 
     buckets = [[]for _ in range(bucketCount)]           #creates empty buckets
 
-    minValue = min(arr)
-    maxValue = max(arr)
-    rangeOfBucket = (maxValue - minValue)/bucketCount
+    minValue = min(arr)                                 #min value is the smallest value in the array
+    maxValue = max(arr)                                 #max value is the largest value in the array
+    rangeOfBucket = (maxValue - minValue)/bucketCount   
 
     for num in arr:                                     #insertes elements into their buckets
         index = int((num-minValue)/rangeOfBucket)
-        if index == bucketCount:
-            index -=1
-        buckets[index].append(num)
+        if index == bucketCount:                        #checks if the index is equivilant to the count (arrays start from 0 and hold n elements)
+            index -=1                                   #so last index must be n-1 because it starts counting from 0 not 1 so it decrements it by 1
+        buckets[index].append(num)                      #appends the number into its index
 
     for bucket in buckets:
-        bucket.sort()                                   #sorts the buckets
+        bucket.sort()                                   #sorts the buckets using the sort() func
 
-    sortedArray = []
-    for bucket in buckets:
+    sortedArray = []                                    #creates a list/array where we can store the sorted array
+    for bucket in buckets:                              #for each bucket in the buckets array it...
         sortedArray.extend(bucket)                      #puts all sorted numbers into the sorted array
 
-    return sortedArray
+    return sortedArray                                  #Returns the sorted array 
 
 #arr = [84,39,583,239,542,245,1,69]
 
@@ -365,4 +373,3 @@ for _ in range(size):
 print("Unsorted array: ",arr)
 sortedArr = bucketSort(arr)
 print("Sorted array: ",sortedArr)
-'''
