@@ -164,6 +164,27 @@ class graph:
         for node in self.graph:                 #for each node in the graph it will print 
             print(f"{node} -> {self.graph[node]}")
 
+#Prim's Algo ----------------
+    def prims(self, start):
+        mst = []
+        visited = set()
+        minHeap = [(0,start,None)]
+
+        while minHeap:
+            weight, currentVer, fromVer = heapq.heappop(minHeap)
+
+            if currentVer in visited:
+                continue
+            visited.add(currentVer)
+
+            if fromVer is not None:
+                mst.append((fromVer,currentVer,weight))
+            for neighbour, edgeWeight in self.graph[currentVer]:
+                if neighbour not in visited:
+                    heapq.heappush(minHeap, (edgeWeight, neighbour, currentVer))
+        return mst
+
+
 #Dijkstra Algo --------------
 import heapq 
 
@@ -187,10 +208,7 @@ def dijkstra(graph,start):
                 heapq.heappush(queue, (distance,neighbour))     
     return distances                                            #returns the distances dictionary
 
-#Prim's Algo ----------------
-def prims(graph, start, end):
-    pass
-
+'''
 #Dijkstra Example -----------
 g = graph()
 g.addEdge('A','B',6)
@@ -205,7 +223,7 @@ g.addEdge('F','G',6)
 g.printGraph()
 
 print(dijkstra(g.graph, 'A'))
-
+'''
 
 #Prim Example ---------------
 g = graph()
@@ -226,5 +244,7 @@ g.addEdge('H','I',7)
 
 g.printGraph()
 
-
-#print(prims(g.graph, 'A'))
+mst = g.prims('A')
+print("\n ---Minimum Spanning Tree--- ")
+for edge in mst:
+    print(f"{edge[0]}-{edge[1]} (weight {edge[2]})")
