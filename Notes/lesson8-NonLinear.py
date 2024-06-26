@@ -173,9 +173,26 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                                                                          it will go to the right child meaning duplicates as well
 
 
-        - Tireachry tree
-            A tree where the parents have 3 children max    (self study will do soon [let me get stats done first])
-                - Same concept lol
+        - Ternary tree
+            A tree where the parents have 3 children max
+                - Left Child
+                - Middle Child (always forgotten)
+                - Right Child
+            
+            Ternary Operations:
+                - Create -> creating a tree in the data structure
+                - Insert -> Inserts data into the tree
+                - Search -> Searches the tree to find specifc data
+                - DFS:
+                    - Pre order Traversal:
+                        current -> left -> right 
+                    - Inorder Traversal
+                        left -> current -> right
+                    - Postorder Traversal
+                        left -> right -> current
+                - BFS: 
+                    - Level Order Traversal
+
 
         - Generic or N-ary Tree
             A tree where the parents can have as many children as they want (boomers)   (same here boss after stats)
