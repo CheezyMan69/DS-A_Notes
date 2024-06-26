@@ -35,3 +35,10 @@ Homework will help a bit in the final mark: (Extra marks)
     - If done on time, it will help bump up  (eg 2.3 overall then due to homework 2.0 or 1.7 (depending on how much you have done))
     - if done late, it will bump up but not as significantly
     - if not done, it will not deduct marks
+
+Exams will be conducted as following
+    
+    - Group 1 (Wednsday batch) -> 3rd of July       Written then Oral
+    - Group 2 (Monday Batch)   -> 1st of August     Oral then Written
+    If you want to take the exam at a later or earlier date (during one of the dates above) then your group
+    it is possible to do so, you just have to ask the prof before the 1st of July
