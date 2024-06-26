@@ -146,11 +146,17 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                 + Memory Efficient
                 + Easy to implement -> only 2 children
 
-            Disadavantages (will finish later)
-                - 
+            Disadavantages
+                - Limited to only 2 children
+                - Could lead to unbalanced trees
+                - Space taker (needs a lot of memory space)
+                - Slow in worst case scenario -> O(n) (n num of nodes)
 
-            Applications (will also finish later)
-                = 
+            Applications
+                = Represent Hierararchial data (file system)
+                = A version of the Binary tree called the Huffman coding tree is used in data compression Algos
+                = Prioiry Queue is used to search for a max or min value in O(1) time
+                = Used to make decision trees which is used for machine learning 
 
             Binary Search Tree (BST):
                 This is a type of binary tree that splits values by how big or small they are compared to the root node
@@ -158,8 +164,13 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                 - on the right of the root we will find values more than the root value
                 This process subs the parent node instead of the root node if there are more values and then contiues to sort
 
-                A BST handles duplicates 
-
+                A BST handles duplicates by either putting them in the left child or the right child
+                    it does not alternate 
+                    eg) if value<self.value:
+                            self.left = insert(self.left, value)
+                        else
+                            self.right = insert(self.right, value)      #this line shows that  if the value is equal to or more than self.value
+                                                                         it will go to the right child meaning duplicates as well
 
 
         - Tireachry tree
