@@ -1,9 +1,10 @@
-Oral:
+Oral: 50%
+
     NOT OPEN BOOK
 
-    The Oral will Contain:
+    The Oral Will Contain:
         - Explaining the concept and steps of an algo in a snippet of code given
-        - Expalining time and space complexity in snippet of code given:
+        - Explaining time and space complexity in the snippet of code given:
             - Big O
             - Big theta     (ALL BIG NOTATION WILL BE ASKED FOR EACH TIME AND SPACE)
             - Big omega
@@ -14,14 +15,22 @@ Oral:
     will be in groups (2 each [will be chosen by prof])
     15mins per group
 
-Written:
-    OPEN BOOK (DO NOT USE ANY AI EXTENSIONS AND NO GOOGLE OR AI)
-    will be given a question and will have to code an algorithim accordingly
-    There will also be mcqs
-    And more complexity calc again
-    on own computer then will be sent
+Written: 50%
 
-Homeworks will help a bit in final mark:
-    - If done on time it will help bump up  (eg 2.3 overall then due to homeworks 2.0 or 1.7 (depends on how much you have done))
-    - if done late will bump up but not as significantly
-    - if not done will not deducte marks
+    OPEN BOOK (DO NOT USE ANY AI EXTENSIONS AND NO GOOGLE OR AI)
+    
+    Will be given a question and will have to code an algorithm accordingly
+    There will also be MCQs
+    And more complexity calc again
+    Coding will be on your own computer and then will be submitted on Teams Fourm (more details below)
+    
+    There will be a forum on Teams, that will contain the MCQs and it is also where you will submit the code
+        (Copy and paste your code from VS code to the forum)
+        DO NOT SUBMIT THE FOURM YOURSELF -> CALL THE PROF FIRST THEN ONCE IT IS OK, SUBMIT WITH HIS PERMISSION
+
+
+Homework will help a bit in the final mark: (Extra marks)
+
+    - If done on time, it will help bump up  (eg 2.3 overall then due to homework 2.0 or 1.7 (depending on how much you have done))
+    - if done late, it will bump up but not as significantly
+    - if not done, it will not deduct marks
