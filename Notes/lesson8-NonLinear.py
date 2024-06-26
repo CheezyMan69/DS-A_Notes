@@ -4,12 +4,44 @@ Non-Linear Data Structures are data structures with multiple branches (like a tr
 they use a hierarchy to sort (on multiple levels[branches]). Uses classes and objects 
 
 - Tree Data Structures
-    They work on nodes, different nodes on different/multiple levels. some nodes are
+    They work on nodes, different nodes on different/multiple levels. Some Terminology that help explain what a tree is:
         - Parent nodes 
-            They are the nodes that give access to the next level (to their children)
+            It is a node that creates/leads into 1 or more nodes in the next level
+        
         - Child Nodes
-            They are the nodes 
-        (not done yet)
+            They are the nodes that originate from a parent node 
+        
+        - Root Node
+            A root is where the tree originates, it is a parent node because all other nodes are its children
+            but it does not have a parent node
+        
+        - Leaf Node (External Node)
+            This type of node is a child node but not a parent node (no connection/path to the next level)
+            usaully on the last level of the tree
+       
+        - Ancestor of a Node
+            Any node that leads to the target node is an ancestor meaning if node A leads to B then C
+            then node A is an ancestor of node C
+
+        -Descendant of a Node
+            Similar to the ancestor but fliped. It is a node that can be traced back to from the target node
+            eg) A-> B -> C -> D (D is the descendant of A)
+
+        - Sibling
+            Child nodes that are from the same parent node are sibling nodes
+
+        - Level of a Node
+            A level can be determined by the amount of edges between the nodes. Root is on Level 0
+            Eg) A -> B -> C -> D    A = Level 0, B = L1, C = L2, D = L3
+
+        - Internal Node
+            A node with at least 1 child (root node and parent nodes are also internal nodes)
+
+        - Neighbour of a Node
+            When a node is connected to other nodes, these other nodes are also considered as Neighbours
+
+        - SubTree
+            A mini tree inside the main tree consists of at least one parent node and its children
 
     Each tree consists of a root node and sub trees - children and parents.
     A node consits of the data inside it and its child nodes.
@@ -62,11 +94,21 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             The total count of subtrees attached to that node. The degree of a leaf node is = 0 and the degree of the tree would be the maximum degree amongst
             all the nodes
     
-    Applications of Tree Data Structures:
+    Applications of Tree Data Structures (Tree DS):
         - File System
         - Data Compression
         - Compiler Design
-        - NOT FUCKING DONE YET WHY MOVE SO DAMN FAST
+        - Database Indexing
+    
+    Advantages of Tree DS:
+        + Efficient Search (if balanced) -> Time complexity = O(log n)
+        + Easy to Organize and navigate
+        + Easy traverse
+
+    Disadvantages of Tree DS:
+        - When a tree is unbalanced, the search is inefficent 
+        - A lot of memory space is taken 
+        - Not easy to change cuz they complex (lol [they are trust me {sometimes at least}])
 
     Types of Trees:
         This is based on the number of children
