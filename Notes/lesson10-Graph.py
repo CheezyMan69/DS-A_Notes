@@ -13,7 +13,19 @@ Graphs
     Ways to represent graphs:
         - Adjacency Matrix -> 2D array which shows if there is an edge connecting the verticies (1) if not
                               then 0
-        - Adjacency List ->
+        - Adjacency List -> It is an array of multiple lists, each list corresponds to a node and the content
+                            of it contains the adjecent nodes (the ones that are connected to it)
+        - Edge List -> A list of all the edges in the graph (all the lines that connect the nodes)
+
+    Graph Operations:
+        - Adding a vertex (a node)
+        - Adding an Edge (a line connecting 2 nodes)
+        - Traversal:
+            + DFS
+            + BFS
+    
+    Applications of Graph Data Structures:
+
 
 
 
@@ -69,6 +81,38 @@ def bfs(graph, start):
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.append(neighbor)
+
+def hasCycle(graph, vertex, visited, parent):
+    visited.add(vertex)
+    for neighbour in graph[vertex]:
+        if neighbour not in visited:
+            if hasCycle(graph, vertex, visited, parent):
+                return True
+            elif parent != neighbour:
+                return True
+        return False
+    
+def containsCycle(graph):
+    visited = set()
+    for vertex in graph:
+        if vertex not in visited:
+            if hasCycle(graph,vertex,visited,None):
+                return True
+        return False
+    
+def shortestPath(graph, start, goal):
+    visited = set()
+    queue = deque([(start, [start])])
+    while queue:
+        (vertex, path) = queue.popleft()
+        for neighbour in graph[vertex]:
+            if neighbour not in visited:
+                if neighbour == goal:
+                    return path + [neighbour]
+                else:
+                    visited.add(neighbour)
+                    queue.append((neighbour, path + [neighbour]))
+    return None
 
 
 g = graph()
