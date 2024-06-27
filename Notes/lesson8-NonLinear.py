@@ -328,7 +328,7 @@ root.left.right = treeNode(5)      #        4   5
 
 print("Is the tree a Full Binary tree? -> ", isFullBinaryTree(root))
 '''
-
+'''
 #Complete Binary Tree --------------
 
 from collections import deque
@@ -365,7 +365,7 @@ root.right.left = treeNode(6)      #
 
 
 print("is it a complete biary tree? ",isCompBinaryTree(root))
-
+'''
 '''
 #Perfect Binary Tree ---------------
 class treeNode:
@@ -626,44 +626,44 @@ class treeNode:
     def __init__(self,value):
         self.value = value
         self.left = None
-        self.middle = None
+        self.middle = None                      #Similar to the Bin tree but it also has a middle value
         self.right = None
 
 def insert(root,value):
     if root is None:
-        return treeNode(value)
+        return treeNode(value)                  #if the root is none the first value in the list will be the root
     if value < root.value:
-        root.left = insert(root.left, value)
+        root.left = insert(root.left, value)    #if the value is smaller than the root value it goes to the left node
     elif value >root.value:
-        root.right = insert(root.right, value)
+        root.right = insert(root.right, value)  #if the value is larger than the root value it goes to the right node
     else:
-        root.middle = insert(root.middle,value)
+        root.middle = insert(root.middle,value) #if the value is the same as the root value it goes to the middle node
     return root
 
 def search(root,value):
-    if root is None or root.value == value:
-        return root
-    if value<root.value:
-        return search(root.left,value)
+    if root is None or root.value == value:     #if the root is none or the root value is the same as the value you are searching for
+        return root                             #it will return the root
+    if value<root.value:                        #if the value is smaller than the root value, it will search for it in the left node
+        return search(root.left,value)  
     else:
-        return search(root.right,value)
+        return search(root.right,value)         #if it is not smaller then it will search for it in the right node
     
 def preTrav(root):
-    if root:
+    if root:                                    #C -> L -> M -> R
         print(root.value, end=' ')
         preTrav(root.left)
         preTrav(root.middle)
         preTrav(root.right)
 
 def inTrav(root):
-    if root:
+    if root:                                    #L -> M -> C -> R
         inTrav(root.left)
         inTrav(root.middle)
         print(root.value,end=' ')
         inTrav(root.right)
 
 def postTrav (root):
-    if root:
+    if root:                                    #L -> M -> R -> C   
         postTrav(root.left)
         postTrav(root.middle)
         postTrav(root.right)
