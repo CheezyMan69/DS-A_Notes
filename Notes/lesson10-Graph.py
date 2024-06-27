@@ -40,10 +40,17 @@ Graphs
             All the node must be connected with the lowest weight total (shortest path) AND must not have a cycle
             Used mainly in Networking
         
+        Kruskal's algorithm: (will be done soon)
 
+    Advantages of Graphs:
+        + Used in many avenues including Machine Learning, Network Analysis, Pathfinding, etc
+        + Used to represent complex data in a simple way 
+        + The algorithms are very efficient and quick 
 
-                
-            
+    Disadvantages of Graphs:
+        - Need to be familiar to understand
+        - if large data sets, it is more complex to operate
+        - If large data sets, complex to view
 '''
 #IM LATE WITH CODE FUUUUCK ----------------------------------------------------
 '''
