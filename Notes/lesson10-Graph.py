@@ -36,11 +36,15 @@ Graphs
                 - To avoid reprocessing it will use a set that keeps track of all vertices that we visited
 
         Prim's algorithm:
-            Minimum spaning tree
+            Minimum spaning tree -> uses the shortest path possible 
             All the node must be connected with the lowest weight total (shortest path) AND must not have a cycle
             Used mainly in Networking
         
         Kruskal's algorithm: (will be done soon)
+            Also a minimum Spanning Tree
+            All nodes must be connected with the shortest path AND must not have a cycle but wat makes it different from Prim's algo
+            is that it does not have a starting point. It aims to connect all of them with no backtracking while prim's backtracks.
+            
 
     Advantages of Graphs:
         + Used in many avenues including Machine Learning, Network Analysis, Pathfinding, etc
