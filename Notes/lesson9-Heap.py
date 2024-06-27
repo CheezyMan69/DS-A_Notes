@@ -18,19 +18,27 @@ Heap Data Structures:
         - finding max/min is O(1) due to it being the root and in a tree it takes O(log n) due to searching
         - Heap can also be referred to as PRIORITY QUEUE (a tree is a connected undirected graph with no circle [more on that later])
         - Heap is built faster than trees
-        
+
+    - Heap Operations:
+        - Insert
+        - Extract Max or Min (depends on the heap)
+        - Heapify
+        - Delete
+        - Peek
+
     - Applications of Heap Data Structures
-        - Dijkstra's Algorithm
         - Heapsort algo
         - Memory Managment
-        - Graph Algorithms
+        - Graph Algorithms (more in L10)
             + Prim's Algorithm (fuck this man[hate it{very not fun}]) (some shit to do with distance and traversal)
-        - Job Schedualing 
-        - more will be added later (give me time)
+            + Dijkstra's Algorithm
+            + Kruskal's Algorithm
+        - Job Scheduling 
 
     + Advantages 
         + Efficient insertion and deletion
-        + 
+        + Access to max or min value through peek or extract
+        + Space Efficent
     
     - Disadvantages
         - Not flexiable -> only a specific order
@@ -38,6 +46,7 @@ Heap Data Structures:
         - Not stable structure -> the order is not preserved
         - Memory managment -> error prone
         - Complexity -> O(n log n)
+
 '''
 #CODE AGAIN -------------------------------------------------------------------
 
