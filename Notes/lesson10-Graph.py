@@ -174,8 +174,8 @@ class graph:
             self.graph[u]= []
         if v not in self.graph:                 #if v not in the graph then it makes a list under the v key
             self.graph[v] = []
-        self.graph[u].append((v, weight))       #append 2 values under the u key and they are the node v and the weight between them
-        self.graph[v].append((u, weight))       #appends 2 values under the v key and they are the node u and the weight between them
+        self.graph[u].append((v, weight))       #append 2 values under the u key and they are the node v and the weight between them (made into a tuple)
+        self.graph[v].append((u, weight))       #appends 2 values under the v key and they are the node u and the weight between them (made into a tuple)
     
     def printGraph(self):                       #prints out the graph in a specific way
         for node in self.graph:                 #for each node in the graph it will print 
@@ -183,23 +183,24 @@ class graph:
 
 #Prim's Algo ----------------
     def prims(self, start):
-        mst = []                                                #Creates list                  
-        visited = set()                                         #creates set
-        minHeap = [(0,start,None)]                              #min heap
-
+        mst = []                                                #Creates list for the minimum spanning tree               
+        visited = set()                                         #creates set which will contain all the vertices visited
+        minHeap = [(0,start,None)]                              #min heap adds a tuple that contains the weight (0) the current vertex (start)
+                                                                #and from vertex (none) to its list
         while minHeap:
-            weight, currentVer, fromVer = heapq.heappop(minHeap)
+            weight, currentVer, fromVer = heapq.heappop(minHeap)    #these values are then popped from the minheap and assigned to their respective variables
 
-            if currentVer in visited:
+            if currentVer in visited:                           #if the current Vertex is vistied then continue normally
                 continue
-            visited.add(currentVer)
+            visited.add(currentVer)                             #if not then we add the current vertex to the visited set
 
-            if fromVer is not None:
-                mst.append((fromVer,currentVer,weight))
-            for neighbour, edgeWeight in self.graph[currentVer]:
-                if neighbour not in visited:
-                    heapq.heappush(minHeap, (edgeWeight, neighbour, currentVer))
-        return mst
+            if fromVer is not None:                             #if the from vertex is not none then we append a tuple that contains the from vertex,
+                mst.append((fromVer,currentVer,weight))         #the current vertex, and the weight between them to the mst list
+            for neighbour, edgeWeight in self.graph[currentVer]:    #in graph, we previously made it into a dictionary that holds the current vertex's neighbour and 
+                if neighbour not in visited:                    #the weight between them. Now for every one of those, if the neighbour is not in visited;
+                    heapq.heappush(minHeap, (edgeWeight, neighbour, currentVer))    #the edge weight, neighbour, and the current vertex are pushed into the minheap list as a tuple
+                                                                                    #and the process repeats once again for as long as min heap is true (has a variable in it)
+        return mst                                              #returns the minimum spanning tree list as the result
 
 
 #Dijkstra Algo --------------
@@ -207,13 +208,13 @@ import heapq
 
 def dijkstra(graph,start):
     queue = []                                                  #Creates a queue list
-    heapq.heappush(queue,(0,start))                             
+    heapq.heappush(queue,(0,start))                             #This func pushes (adds) 0 and our start value to the list called queue while maintaing a proper heap
     distances = {vertex: float('inf') for vertex in graph}      #creates a dictionary with a vertex key for each vertex in the graph with a float value inside  
     distances[start] = 0                                        #gives the key start a value of 0
     visited = set()                                             #creates a set called visited
 
     while queue:                                                #while the queue is true
-        currentDis, currentVer = heapq.heappop(queue)           #added the current distance and the vertex to the queue
+        currentDis, currentVer = heapq.heappop(queue)           #the current distance is = to the smallest value in the queue (that value is then removed). Same process is done for current vertex
         if currentVer in visited:                               #if the current vertex is in visted then continue 
             continue
         visited.add(currentVer)                                 #if not in visited then add the vertex to visited
@@ -222,7 +223,7 @@ def dijkstra(graph,start):
             distance = currentDis + weight                      #distance is calculated as the current distance + the weight of the new edge
             if distance < distances[neighbour]:                 #if the distance calculated is less then the distance already calculated 
                 distances[neighbour] = distance                 #then it will be the new distance
-                heapq.heappush(queue, (distance,neighbour))     
+                heapq.heappush(queue, (distance,neighbour))     #this distance is then pushed into the queue along with the neighbour associated with it
     return distances                                            #returns the distances dictionary
 
 '''
