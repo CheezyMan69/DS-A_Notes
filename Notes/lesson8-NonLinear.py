@@ -116,7 +116,8 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             One Parent node has a maximum of 2 children
             Types of Binary tree:
                 - Full Binary Tree        -> all nodes (other than the leaf nodes) have 2 children
-                - Complete binary Tree    -> All levels are completly filled except the last level which is filled from left to right
+                - Complete binary Tree    -> All levels are completly filled except the last level which is filled from left to right 
+                                             (if there is no left then not complete but if there is no right, it is complete)
                 - Perfect Binary tree     -> All parent nodes have 2 children and all levels are complete from left to right
                 - Incomplete Binary Tree  -> does not fill all the levels
                 - Binary Search Tree(BST) -> A tree that is organized with the left side smaller than the root and specific parent node and the right side is 
@@ -327,7 +328,7 @@ root.left.right = treeNode(5)      #        4   5
 
 print("Is the tree a Full Binary tree? -> ", isFullBinaryTree(root))
 '''
-'''
+
 #Complete Binary Tree --------------
 
 from collections import deque
@@ -338,7 +339,7 @@ class treeNode:
         self.left = None
         self.right = None
 
-def isCompBinaryTree(root):             #[WRONG fucking checker (fun) will change later]
+def isCompBinaryTree(root):             
     if not root:
         return True
     queue = deque([root])
@@ -364,7 +365,7 @@ root.right.left = treeNode(6)      #
 
 
 print("is it a complete biary tree? ",isCompBinaryTree(root))
-'''
+
 '''
 #Perfect Binary Tree ---------------
 class treeNode:
@@ -619,7 +620,7 @@ if searchOrDelete == "D" or searchOrDelete == "d":
 else:
     print("so you dont want to do shit got it bye bitch")
 '''
-
+'''
 #Ternary Tree Operations -----------
 class treeNode:
     def __init__(self,value):
@@ -687,3 +688,4 @@ print(" ---In Trav--- ")
 print(inTrav(root))
 print(" ---Post Trav--- ")
 print(postTrav(root))
+'''
