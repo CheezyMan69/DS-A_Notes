@@ -38,12 +38,17 @@ Graphs
         Prim's algorithm:
             Minimum spaning tree -> uses the shortest path possible 
             All the node must be connected with the lowest weight total (shortest path) AND must not have a cycle
-            Used mainly in Networking
-        
+            Starts at a vertex and moves to the next vertex with the shortest path possible until all of the verticies are
+            connected with no cycle. Backtraking is permited so vertex C can be connected to multiple other vertecies as long as
+            it does not create a cycle and is allows for the lowest weight total (shortest path).
+                - Used mainly in Networking
+                
         Kruskal's algorithm: (will be done soon)
             Also a minimum Spanning Tree
             All nodes must be connected with the shortest path AND must not have a cycle but wat makes it different from Prim's algo
             is that it does not have a starting point. It aims to connect all of them with no backtracking while prim's backtracks.
+            Prim's algo starts at a vertex wihile Kruskal's starts at the lightest (smallest) edge and then goes to the next one (thry do
+            not have to be connected) it goes in asending order until all verticies are connected with no cycles.
             
 
     Advantages of Graphs:
