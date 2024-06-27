@@ -357,7 +357,7 @@ def bucketSort(arr):
 
     sortedArray = []                                    #creates a list/array where we can store the sorted array
     for bucket in buckets:                              #for each bucket in the buckets array it...
-        sortedArray.extend(bucket)                      #puts all sorted numbers into the sorted array
+        sortedArray.extend(bucket)                      #puts all sorted numbers into the sorted array (append is used for 1 value, extend is used for multiple values)
 
     return sortedArray                                  #Returns the sorted array 
 
