@@ -78,9 +78,9 @@ class graph:
         if vertex2 not in self.graph:
             self.addVertex(vertex2)
 
-        self.graph[vertex1].append(vertex2)     #adds the vertex2 to the list of vertex1 to show that they are connected
+        self.graph[vertex1].append(vertex2)     #adds the vertex2 to the key of vertex1 to show that they are connected
         if not directed:
-            self.graph[vertex2].append(vertex1) #same thing if not directed but other way around
+            self.graph[vertex2].append(vertex1)     #same thing if not directed but other way around
     
     def __str__(self):
         return str(self.graph)
@@ -101,16 +101,17 @@ def dfs(graph, start, visited = None):
 from collections import deque
 
 def bfs(graph, start):
-    visited = set()                             #Creates a set called visited
+    visited = set()                             #Creates a set called visited (a set can not have duplicate values)
     visited.add(start)                          #adds the start value to the set
     queue = deque([start])                      #adds the start value to the queue
     while queue:                                
-        vertex = queue.popleft()                #vertex 
-        print(vertex, end = " ")
-        for neighbor in graph[vertex]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(neighbor)
+        vertex = queue.popleft()                #vertex = the popped value in the queue (removed) in this case it would be start
+        print(vertex, end = " ")                #prints out the vertex with a space at the end
+        for neighbor in graph[vertex]:          #for every neighbour in the current vertex key
+            if neighbor not in visited:         #if it is not in visited, 
+                visited.add(neighbor)           #it will be added to visited
+                queue.append(neighbor)          #and it will be added to the queue
+                                                #the process will repeat until the queue is empty (meaning when all the neighbours are in visited)
 
 def hasCycle(graph, vertex, visited, parent):   #Checks if there is a cycle
     visited.add(vertex)                         #addes the veertex to the set of visited
@@ -131,19 +132,19 @@ def containsCycle(graph):
         return False                            #If the func is not true it will return false and that means there is no cycle
     
 def shortestPath(graph, start, goal):
-    visited = set()                             #creats a set called visited
-    queue = deque([(start, [start])])           #creates a queue
-    while queue:                                #while the queue is active 
-        (vertex, path) = queue.popleft()        #it addes the vertex
-        for neighbour in graph[vertex]:
-            if neighbour not in visited:
-                if neighbour == goal:
-                    return path + [neighbour]
-                else:
-                    visited.add(neighbour)
-                    queue.append((neighbour, path + [neighbour]))
-    return None
-
+    visited = set()                             #creates a set called visited
+    queue = deque([(start, [start])])           #creates a queue with a tuple element that consits of the start vertex and value of the start vertex (this will be used for the path later)
+    while queue:                                #while the queue has variables/elements:
+        (vertex, path) = queue.popleft()        #the queue pops left (removes the first value in) and assigns it to the tuple of vertex and path
+        for neighbour in graph[vertex]:         #for every neighbour in the key vertex:
+            if neighbour not in visited:        #if it is not in visted it will check,
+                if neighbour == goal:           #if the neighbour is the goal we need to reach and if so it will return the
+                    return path + [neighbour]   #path and the neighbour
+                else:                           #if it is not the goal then it will 
+                    visited.add(neighbour)      #add the neighbour to the visited set and
+                    queue.append((neighbour, path + [neighbour]))   #appends the neighbour, and the path + neighbour to the queue
+    return None                                 #repeats the process until the neighbour is the goal or the queue is empty
+                                                #if the queue becomes empty and the goal was not reached it will return None
 
 g = graph()
 
