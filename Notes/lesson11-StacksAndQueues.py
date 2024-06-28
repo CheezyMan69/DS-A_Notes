@@ -2,21 +2,41 @@
 '''
 Stacks
     What is a stack?
-        something
+        A linear data structure that uses the first in -> last out method which means when we add an element it will be the top-most on the stack, if 
+        we then add another element, that one will be the top and the previous one (the first one in) will be underneath it/after it. When we want to 
+        remove an element, the top-most element (last in) will be the one removed. 
 
     Main functions:
-        - Push
+        - Push/Append
             Adds elements to the top of the stack
         - Pop
-            To remove the top most element in the stack
+            Removes the top most element in the stack
         - Peek
-            To look at the top most element in the stack
+            Looks at the top most element in the stack
+        - Size
+            Checks on the current size of the Stack
+        - Is Empty?
+            Checks if the stack is empty or not
+        - Print
+            Prints/Displays out the current Stack
+    
+    Advantages of using Stacks:
+        + Simple to use and implement 
+        + Fast for adding and/or removing elements -> Time = O(1)
+        + Can be implented into other data structures such as Linked Lists
+        + Used to implement undo and redo functions to the program
+
+    Disadvantages:
+        - There is a maximum size to the Stack, so large data sets are not good for this DS
+        - Not fast to access elements that are not at the top
+        - Can't search efficently 
 
 Queue
     First in First out
     Last in Last out
 
     deque
+        It is a double ended queue (acts both as a stack and a queue)
         Removes the first element in the queue (front of queue)
 
     Size
@@ -30,36 +50,37 @@ Queue
 #Stacks ----------------------------
 class stack:
     def __init__(self):
-        self.items = []
+        self.items = []                                     #Constructs the stack as a list of items
 
     def push(self,item):
-        self.items.append(item)
-        print(f"Pushed {item}, Stack: {self.items}")
+        self.items.append(item)                             #adds the item to the list
+        print(f"Pushed {item}, Stack: {self.items}")        #displays that the item has been added as well as the stack itself
 
     def pop(self):
-        if not self.isEmpty():
-            item = self.items.pop()
-            print(f"Popped {item}, Stack: {self.items}")
-            return item
+        if not self.isEmpty():                              #if not empty:
+            item = self.items.pop()                         #the stack pops (removes the top most element) and assigns it to the variable item
+            print(f"Popped {item}, Stack: {self.items}")    #shows that the item was succesfully popped as well as the rest of the stack
+            return item                                     #returns the item 
         else: 
-            print("Pop Operation failed, Stack is empty")
+            print("Pop Operation failed, Stack is empty")   #if the stack is empty: it shows that nothing can be popped because of it is empty
 
     def peek(self):
-        if not self.isEmpty():
-            print(f"Peek {self.items[-1]}")
-            return self.items[-1]
+        if not self.isEmpty():                              #if not empty:
+            print(f"Peek {self.items[-1]}")                 #peeks at the item with the index of -1 (the top most element)
+            return self.items[-1]                           #returns the peeked item
         else:
-            print("Peek Operation failed, Stack is empty")
+            print("Peek Operation failed, Stack is empty")  #if empty: it shows that nothing can be peeked at because the stack is empty
 
-    def isEmpty(self):
-        return len(self.items) == 0
+    def isEmpty(self):                      
+        return len(self.items) == 0                         #if the length of the list of items is 0 then it will return true, 
+                                                            #otherwise it will return false
     
     def size(self):
-        print(f"Size of Stack: {len(self.items)}")
-        return len(self.items)
+        print(f"Size of Stack: {len(self.items)}")          #prints the size of the stack using the length func
+        return len(self.items)                              #returns the size
     
     def printStack(self):
-        print(f"Stack: {self.items}")
+        print(f"Stack: {self.items}")                       #prints the items in the stack (the list)
 
 s = stack()
 s.push(1)
@@ -73,4 +94,4 @@ s.pop()
 s.peek()
 s.size()
 print("\nIs the stack empty? ")
-s.isEmpty()
+print(s.isEmpty())
