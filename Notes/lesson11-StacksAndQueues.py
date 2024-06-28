@@ -32,21 +32,23 @@ Stacks
         - Can't search efficently 
 
 Queue
-    First in First out
-    Last in Last out
+    Another linear Data Structure similar to stacks but the difference is that it uses the First in -> First out method unlike stacks where it is
+    First in -> Last out. This method is very similar to a proper queue at a super market for example. When we added the first element 
 
-    deque
-        It is a double ended queue (acts both as a stack and a queue)
-        Removes the first element in the queue (front of queue)
-
-    Size
-        To know the size of the queue
+    Main Functions:
+        - deque
+            It is a double ended queue (acts both as a stack and a queue)
+            Removes the first element in the queue (front of queue) using popleft()
+        - Push
+            Appends the new value into the end of the queue
+        - Size
+            Checks the size of the queue
 
     
 
 '''
 #Code -------------------------------------------------------------------------------------
-
+'''
 #Stacks ----------------------------
 class stack:
     def __init__(self):
@@ -95,3 +97,55 @@ s.peek()
 s.size()
 print("\nIs the stack empty? ")
 print(s.isEmpty())
+'''
+
+#Queues ----------------------------
+from collections import deque
+
+class queue:
+    def __init__(self):
+        self.items = deque()                                #Constructs the queue using deque
+
+    def push(self, item):
+        self.items.append(item)                             #appends the item to the end of the queue
+        print(f"Pushed {item}, Queue: {self.items}")
+
+    def pop(self):
+        if not self.isEmpty():                              #if not empty:
+            item = self.items.popleft()                     #the queue pops (removes the first element in) and assigns it to the variable item
+            print(f"Popped {item}, Queue: {self.items}")    #shows that the item was succesfully popped as well as the rest of the queue
+            return item                                     #returns the item 
+        else:                                    
+            print("Pop Operation failed, Queue is empty")   #if the queue is empty: it shows that nothing can be popped because of it is empty
+
+    def peek(self):
+        if not self.isEmpty():                              #if not empty:
+            print(f"Peek {self.items[0]}")                  #peeks at the item with the index of 0 (the first element in)
+            return self.items[0]                            #returns the peeked item
+        else:
+            print("Peek Operation failed, Queue is empty")  #if empty: it shows that nothing can be peeked at because the queue is empty
+
+    def isEmpty(self):                      
+        return len(self.items) == 0                         #if the length of the list of items is 0 then it will return true, 
+                                                            #otherwise it will return false
+    
+    def size(self):
+        print(f"Size of Queue: {len(self.items)}")          #prints the size of the queue using the length func
+        return len(self.items)                              #returns the size
+    
+    def printQueue(self):
+        print(f"Queue: {self.items}")                       #prints the items in the queue (the list)
+
+q = queue()
+q.push(1)
+q.push(2)
+q.push(3)
+q.peek()
+q.printQueue()
+
+q.size()
+q.pop()
+q.pop()
+q.pop()
+print("\nIs the Queue empty?")
+print(q.isEmpty())
