@@ -20,7 +20,7 @@ Stacks
         - Print
             Prints/Displays out the current Stack
     
-    Advantages of using Stacks:
+    Advantages:
         + Simple to use and implement 
         + Fast for adding and/or removing elements -> Time = O(1)
         + Can be implented into other data structures such as Linked Lists
@@ -33,18 +33,26 @@ Stacks
 
 Queue
     Another linear Data Structure similar to stacks but the difference is that it uses the First in -> First out method unlike stacks where it is
-    First in -> Last out. This method is very similar to a proper queue at a super market for example. When we added the first element 
+    First in -> Last out. This method is very similar to a proper queue at a super market for example. When we added the first element it becomes
+    the first one in. If we add a second element, it becomes the second one in. If we want to remove an element it will remove the first in element 
+    not the second one in. 
 
     Main Functions:
-        - deque
+        - deque()
             It is a double ended queue (acts both as a stack and a queue)
             Removes the first element in the queue (front of queue) using popleft()
         - Push
             Appends the new value into the end of the queue
+        - Peek
+            Looks at the first element in the queue
         - Size
             Checks the size of the queue
-
+        - Is Empty?
+            Checks if the queue is empty or not
+        - Print
+            Prints/Displays out the current queue
     
+    Advantages and Disadvatages are similar to stacks 
 
 '''
 #Code -------------------------------------------------------------------------------------
@@ -98,7 +106,7 @@ s.size()
 print("\nIs the stack empty? ")
 print(s.isEmpty())
 '''
-
+'''
 #Queues ----------------------------
 from collections import deque
 
@@ -149,3 +157,4 @@ q.pop()
 q.pop()
 print("\nIs the Queue empty?")
 print(q.isEmpty())
+'''
