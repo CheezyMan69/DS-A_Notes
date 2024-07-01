@@ -8,10 +8,10 @@ Algorithms Introduction
    
     There are 2 aspects of Algorithms:
         - Time complexity = How much time it takes to run.
-                            Can be calculated practiclly by importing time to python but normally
+                            Can be calculated practically by importing time to python but normally
                             we use theoretical analysis to evaluate the speed without any influence of
                             hardware or software using pseudocode and the n for input size. Taking the worst case
-                            sceneario (longest time possible) is required.
+                            scenario (longest time possible) is required.
 
                             Examples of things taking time:
                                 - assigning (=) = 1 unit of time (uT)
@@ -21,7 +21,7 @@ Algorithms Introduction
                                 - Arrays = 1uT
                                 - return = 1uT
                             
-                            Using this knowledge we can run a code and calculate how much time it would take (theortically):
+                            Using this knowledge we can run a code and calculate how much time it would take (theoretically):
                                 x=10        1uT
                                 y=20        1uT
                                 z=x+y       2uT (= and +)
@@ -39,7 +39,7 @@ Algorithms Introduction
                             ---- Total = 1+11 = 12uT ----
                             This previous example can change due to num being different (like num = 20)
                             so it can be calculated this way
-                            1+1+n+1+1+n = {2n+4} (creates a function that we can use to calculate the worst case scenerio)
+                            1+1+n+1+1+n = {2n+4} (creates a function that we can use to calculate the worst case scenario)
 
                             Another Example:
                                 int sumOfN (num){       1uT
@@ -55,7 +55,7 @@ Algorithms Introduction
                                 func sumInteger (n):
                                     sum = 0;            1uT
                                     for(i=1;i<=n;i++){  1+(n+1)+n uT
-                                        sum = sum + i;   n+n uT (keeps occuring due to loop)
+                                        sum = sum + i;   n+n uT (keeps occurring due to loop)
                                     }
                                     return sum;         1uT
 
@@ -93,14 +93,14 @@ Algorithms Introduction
                                 - N-log-N = n log n
                                 - Quadratic = n^2
                                 - Cubic = n^3
-                                - Exponantial = 2^n
+                                - Exponential = 2^n
                             
-                            This is a result of how much space the algorithim would take. The more space, the more time
+                            This is a result of how much space the algorithm would take. The more space, the more time
                             but that also depends on what the algorithm does.
 
-                            One of the ways to calcluate the growth rate, we can use the Big-O notation:
+                            One of the ways to calculate the growth rate, we can use the Big-O notation:
                                 This is done by ignoring all constants in the function and focusing on the highest degree of n because
-                                that is the biggest value in the function so we can use it to calculate the worst case sceneario.
+                                that is the biggest value in the function so we can use it to calculate the worst case scenario.
 
                                 O(g(n)) = f(n)<=cg(n)       c = constant
                                     for n = n0
@@ -118,11 +118,11 @@ Algorithms Introduction
                                 - used only for worst case scenarios
 
                             Computing Prefix Averages:
-                                This is an algorithim that calculates the average of an inputed array by adding the previous value
+                                This is an algorithm that calculates the average of an inputted array by adding the previous value
                                 and dividing by n (which is the amount of values so far) and it repeats until the end of the array
                                 (example in the #Code below)
-                                Through these 2 examples (quad and linear) we can see that the linear varient will take less time
-                                due to the lower degree. As the n grows the time will always be lower than n^2 in the quad varient.
+                                Through these 2 examples (quad and linear) we can see that the linear variant will take less time
+                                due to the lower degree. As the n grows the time will always be lower than n^2 in the quad variant.
                             
                             Big-O is used for the worst case scenario, but what if you want to calculate the best case or the average case?
                             The answer is to use the Big-Omega notation (best case) or the Big-Theta notation (average case).
@@ -142,14 +142,14 @@ Algorithms Introduction
                                     6n^2+5n+13 uT -> O(n^2 + n)                               
 
         - Space complexity = How much space does the algorithm take
-                             This uses 2 types, Auxilary and Total
-                                - Auxilary calculates the space needed without any input. This includes:
+                             This uses 2 types, Auxiliary and Total
+                                - Auxiliary calculates the space needed without any input. This includes:
                                     + Variables
                                     + Data Structures
                                     + Any additional memory needed
 
                                 - Total calculates all the space including input. This includes:
-                                    + Auxilary space
+                                    + Auxiliary space
                                     + Input
                              
                              To calculate the Space complexity you need to do the following:

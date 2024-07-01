@@ -17,14 +17,14 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
         
         - Leaf Node (External Node)
             This type of node is a child node but not a parent node (no connection/path to the next level)
-            usaully on the last level of the tree
+            usually on the last level of the tree
        
         - Ancestor of a Node
             Any node that leads to the target node is an ancestor meaning if node A leads to B then C
             then node A is an ancestor of node C
 
         -Descendant of a Node
-            Similar to the ancestor but fliped. It is a node that can be traced back to from the target node
+            Similar to the ancestor but flipped. It is a node that can be traced back to from the target node
             eg) A-> B -> C -> D (D is the descendant of A)
 
         - Sibling
@@ -44,15 +44,15 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             A mini tree inside the main tree consists of at least one parent node and its children
 
     Each tree consists of a root node and sub trees - children and parents.
-    A node consits of the data inside it and its child nodes.
+    A node consists of the data inside it and its child nodes.
 
     Root is level 0, the first children would be level 1 and so on.
 
     Basic operations of Tree Structures:
         - Create -> creating a tree in the data structure
         - Insert -> Inserts data into the tree
-        - Search -> Searches the tree to find specifc data
-        - Travesrse:
+        - Search -> Searches the tree to find specific data
+        - Traverse:
             Depth-First-Search Traversal (DFS)
                 Moves from the deepest level (most cases level 0 = root) first to the highest level:
                     1. Checks if the root as children and if so it will move from root to the first child  (R->C1)
@@ -106,7 +106,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
         + Easy traverse
 
     Disadvantages of Tree DS:
-        - When a tree is unbalanced, the search is inefficent 
+        - When a tree is unbalanced, the search is inefficient 
         - A lot of memory space is taken 
         - Not easy to change cuz they complex (lol [they are trust me {sometimes at least}])
 
@@ -116,7 +116,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             One Parent node has a maximum of 2 children
             Types of Binary tree:
                 - Full Binary Tree        -> all nodes (other than the leaf nodes) have 2 children
-                - Complete binary Tree    -> All levels are completly filled except the last level which is filled from left to right 
+                - Complete binary Tree    -> All levels are completely filled except the last level which is filled from left to right 
                                              (if there is no left then not complete but if there is no right, it is complete)
                 - Perfect Binary tree     -> All parent nodes have 2 children and all levels are complete from left to right
                 - Incomplete Binary Tree  -> does not fill all the levels
@@ -125,13 +125,13 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                 - Balanced Binary Tree    -> The height of left and right subtrees only differs by one between each node
                 - Red Black tree          -> Self balancing binary search tree where the nodes are coloured red or black to make sure that it is balanced when
                                              deleting or insertion 
-                - AVL Tree                -> Also a self balancing binary search tree where the diffrence between left and right subtrees cannot be more than
+                - AVL Tree                -> Also a self balancing binary search tree where the difference between left and right subtrees cannot be more than
                                              one for all nodes
 
             Binary Operations:
                 - Create -> creating a tree in the data structure
                 - Insert -> Inserts data into the tree
-                - Search -> Searches the tree to find specifc data
+                - Search -> Searches the tree to find specific data
                 - DFS:
                     - Pre order Traversal:
                         current -> left -> right 
@@ -147,23 +147,23 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
                 + Memory Efficient
                 + Easy to implement -> only 2 children
 
-            Disadavantages
+            Disadvantages
                 - Limited to only 2 children
                 - Could lead to unbalanced trees
                 - Space taker (needs a lot of memory space)
                 - Slow in worst case scenario -> O(n) (n num of nodes)
 
             Applications
-                = Represent Hierararchial data (file system)
+                = Represent Hierarchial data (file system)
                 = A version of the Binary tree called the Huffman coding tree is used in data compression Algos
-                = Prioiry Queue is used to search for a max or min value in O(1) time
+                = Priority Queue is used to search for a max or min value in O(1) time
                 = Used to make decision trees which is used for machine learning 
 
             Binary Search Tree (BST):
                 This is a type of binary tree that splits values by how big or small they are compared to the root node
                 - On the left of the root we will find values less than the root value
                 - on the right of the root we will find values more than the root value
-                This process subs the parent node instead of the root node if there are more values and then contiues to sort
+                This process subs the parent node instead of the root node if there are more values and then continues to sort
 
                 A BST handles duplicates by either putting them in the left child or the right child
                     it does not alternate 
@@ -183,7 +183,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
             Ternary Operations:
                 - Create -> creating a tree in the data structure
                 - Insert -> Inserts data into the tree
-                - Search -> Searches the tree to find specifc data
+                - Search -> Searches the tree to find specific data
                 - DFS:
                     - Pre order Traversal:
                         current -> left -> middle -> right 
@@ -196,7 +196,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
 
 
         - Generic or N-ary Tree
-            A tree where the parents can have as many children as they want (boomers)   (same here boss after stats)
+            A tree where the parents can have as many children as they want (boomers) [same concepts ase the rest of the trees]
 
 
 '''
@@ -205,7 +205,7 @@ they use a hierarchy to sort (on multiple levels[branches]). Uses classes and ob
 #Simple Tree -----------------------
 class treeNode: 
     def __init__(self,value):
-        self.value = value                  #Creats a Node with a value
+        self.value = value                  #Creates a Node with a value
         self.children = []                  #And the list of its children
 
     def addChild(self,childNode):
@@ -252,7 +252,7 @@ from collections import deque               #For BFS (queue)
 
 class treeNode: 
     def __init__(self,value):
-        self.value = value                  #Creats a Node with a value
+        self.value = value                  #Creates a Node with a value
         self.children = []                  #And the list of its children
 
     def addChild(self,childNode):
@@ -364,7 +364,7 @@ root.left.right = treeNode(5)      #        4   5   6
 root.right.left = treeNode(6)      #
 
 
-print("is it a complete biary tree? ",isCompBinaryTree(root))
+print("is it a complete binary tree? ",isCompBinaryTree(root))
 '''
 '''
 #Perfect Binary Tree ---------------
@@ -569,18 +569,18 @@ for _ in range(size):
 for value in values:
     root = insert(root,value)
 
-printway = input("How would you like this to be printed? (I = Inorder | Pre = Preorder | Po = Postorder): ")
-if printway == 'I' or printway == 'i':
+printWay = input("How would you like this to be printed? (I = Inorder | Pre = Preorder | Po = Postorder): ")
+if printWay == 'I' or printWay == 'i':
     print(" ---Inorder Traversal--- ")
     inOrderTrav(root)
     print()
 
-if printway == "pre" or printway =="Pre" or printway == "PRE" or printway == "PRe" or printway == "pRE" or printway == "pRe" or printway == "prE":
+if printWay == "pre" or printWay =="Pre" or printWay == "PRE" or printWay == "PRe" or printWay == "pRE" or printWay == "pRe" or printWay == "prE":
     print(" ---Preorder Traversal--- ")
     preOrderTrav(root)
     print()
 
-if printway == "po" or printway == "Po" or printway == "pO":
+if printWay == "po" or printWay == "Po" or printWay == "pO":
     print(" ---Postorder Traversal--- ")
     postOrderTrav(root)
     print()
@@ -601,18 +601,18 @@ if searchOrDelete == "D" or searchOrDelete == "d":
         print("Deleted ",valueToDelete)
     else:
         print("Failed to delete ",valueToDelete," -> (it no exist boss)")
-    printway = input("How would you like this to be printed? (I = Inorder | Pre = Preorder | Po = Postorder): ")
-    if printway == 'I' or printway == 'i':
+    printWay = input("How would you like this to be printed? (I = Inorder | Pre = Preorder | Po = Postorder): ")
+    if printWay == 'I' or printWay == 'i':
         print(" ---Inorder Traversal--- ")
         inOrderTrav(root)
         print()
 
-    if printway == "pre" or printway =="Pre" or printway == "PRE" or printway == "PRe" or printway == "pRE" or printway == "pRe" or printway == "prE":
+    if printWay == "pre" or printWay =="Pre" or printWay == "PRE" or printWay == "PRe" or printWay == "pRE" or printWay == "pRe" or printWay == "prE":
         print(" ---Preorder Traversal--- ")
         preOrderTrav(root)
         print()
 
-    if printway == "po" or printway == "Po" or printway == "pO":
+    if printWay == "po" or printWay == "Po" or printWay == "pO":
         print(" ---Postorder Traversal--- ")
         postOrderTrav(root)
         print()

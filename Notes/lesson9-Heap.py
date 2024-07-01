@@ -10,7 +10,7 @@ Heap Data Structures:
         Max heap has the root node as the maximum value in the tree and all the other values are less than it
         Min heap has the root node as the minimum value in the tree and all the other values are more than it
 
-    - Diffrences between Heap and Trees
+    - Differences between Heap and Trees
         - Heap is a kind of tree but a tree is not a kind of heap
         - Heap has only 2 types while trees have many types
         - Heap is ordered, a normal tree is not
@@ -27,8 +27,8 @@ Heap Data Structures:
         - Peek
 
     - Applications of Heap Data Structures
-        - Heapsort algo
-        - Memory Managment
+        - HeapSort algo
+        - Memory Management
         - Graph Algorithms (more in L10)
             + Prim's Algorithm (fuck this man[hate it{very not fun}]) (some shit to do with distance and traversal)
             + Dijkstra's Algorithm
@@ -38,13 +38,13 @@ Heap Data Structures:
     + Advantages 
         + Efficient insertion and deletion
         + Access to max or min value through peek or extract
-        + Space Efficent
+        + Space Efficient
     
     - Disadvantages
-        - Not flexiable -> only a specific order
+        - Not flexible -> only a specific order
         - Not for searching 
         - Not stable structure -> the order is not preserved
-        - Memory managment -> error prone
+        - Memory management -> error prone
         - Complexity -> O(n log n)
 
 '''
@@ -60,8 +60,8 @@ class maxHeap:
             self.heapify()                              #calls the heapify function to keep the heap property (check notes boss)
     
     def heapify(self):
-        for i in range(len(self.heap)//2 -1,-1,-1):     #Heapify trys to find the index of the leaf nodes and calles bubble down
-            self._bubbleDown(i)                         #calles bubble down with index of the value of i (more on this below)
+        for i in range(len(self.heap)//2 -1,-1,-1):     #Heapify tries to find the index of the leaf nodes and calls bubble down
+            self._bubbleDown(i)                         #calls bubble down with index of the value of i (more on this below)
         
     def insert(self,value):
         self.heap.append(value)                         #for each value inserted it will add to the heap array
@@ -93,7 +93,7 @@ class maxHeap:
     def extractMax(self):
         if len(self.heap) == 0:                         #if the length of the array 0 then it does not work
             return None
-        if len(self.heap) == 1:                         #if the length of the array is equvilant to 1 it will extract the first value
+        if len(self.heap) == 1:                         #if the length of the array is equivalent to 1 it will extract the first value
             return self.heap.pop()
         maxValue = self.heap[0]                         #if the length is more than 1, the max value becomes the first value (root)
         self.heap[0] = self.heap.pop()                  #then the root is extracted/deleted from the array
@@ -104,10 +104,10 @@ class maxHeap:
         return self.heap[0] if self.heap else None      #return the root if the heap exists and if it does not then return nothing (None)
     
     def delete(self,value):
-        try:                                            #Attepmts the code in the try block and if there is an error (anywhere) it will move to another code (catch block [in python its except])
+        try:                                            #Attempts the code in the try block and if there is an error (anywhere) it will move to another code (catch block [in python its except])
                                                         #the catch block (except in python) will handle the error accordingly (telling the user to try again for example [its another code that you write])
             index = self.heap.index(value)              #index becomes the index of the value entered
-            if index == len(self.heap) -1:              #if the index is equivilant to the length of the heap (array) -1 (the last element) it will delete it
+            if index == len(self.heap) -1:              #if the index is equivalent to the length of the heap (array) -1 (the last element) it will delete it
                 self.heap.pop()
             else:
                 self.heap[index] = self.heap.pop()      #if not last element it will delete the value entered

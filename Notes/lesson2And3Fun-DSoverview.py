@@ -7,7 +7,7 @@ Linear Data Structures -
 
     - Pointers = var that store memory addresses, security issue cuz of memory access, can change values indirectly
                     Not used in high level prog languages (in C and C++ but not Python or C#) 
-                        in Python -> use refrences instead of Pointers (A=[1,2,3,4] -> ref is A[4]=10)
+                        in Python -> use references instead of Pointers (A=[1,2,3,4] -> ref is A[4]=10)
     
     - Linked Lists (LL) = resizable, uses memory allocation to link values with one another
                             stores a value and a memory address -> the memory address is for the next value in line (Pointer)
@@ -16,16 +16,16 @@ Linear Data Structures -
     
     - Doubly Linked Lists (DLL) = similar to Linked Lists but instead of only a next memory address it also houses a previous memory address
                                     This allows it to go back and forth (Backwards to the previous address and Forwards to the next address)
-                                         Sorting in this way is much much faster (apperantly)
-                                             For LL it only goes one way so more itterations for sorting but for DLL it can go back and forth so the 
-                                             amount of itterations are less getting it to sort faster
-                                                LL can take up to 6 itteration for sorting one list but DLL can do it in 3 itterations for the same list
+                                         Sorting in this way is much much faster (apparently)
+                                             For LL it only goes one way so more iterations for sorting but for DLL it can go back and forth so the 
+                                             amount of iterations are less getting it to sort faster
+                                                LL can take up to 6 iteration for sorting one list but DLL can do it in 3 iterations for the same list
 '''
 '''
 Data Structures in Python -
-    - Lists = changable (mutable), uses [], (Dynamic Arrays)
+    - Lists = changeable (mutable), uses [], (Dynamic Arrays)
     - Tuples = cannot be changed later on (immutable), uses (), for fixed values (use when you dont want to change data again)
-    - Dictionaries = uses a key, contains any data type, changable (mutable), uses{}
+    - Dictionaries = uses a key, contains any data type, changeable (mutable), uses{}
     - Sets = size is mutable but elements are immutable, uses {}, fixed values but growing size, no duplicate elements
     - Arrays
 '''
@@ -36,7 +36,7 @@ names = ["john","bob","kissma nuts"]
 student = [1,"kissma nuts",True]        #lists can store multiple data types
 
 for num in numbers:
-    print(num)                          #procceds to type all the (num)bers in the list
+    print(num)                          #proceeds to type all the (num)bers in the list
 
 for i in student:
     print(i)                            #prints out all the values in the list
@@ -59,7 +59,7 @@ for i in dimensions:
 '''
 #Dictionaries ----------------------
 person = {"firstName": "Ben", "lastName": "Dover", "age": 69,}          #firstName is the key and Ben is the value -> to access Ben you need to use firstName
-                                                                        #keeps thing organized (the , keeps the keys seperated), it can be in a row or column
+                                                                        #keeps thing organized (the , keeps the keys separated), it can be in a row or column
 
 racer = {"name": "Carlos Sainz",
          "age": 29,

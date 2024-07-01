@@ -8,7 +8,7 @@ Oral: 50%
             - Big O
             - Big theta     (ALL BIG NOTATION WILL BE ASKED FOR EACH TIME AND SPACE)
             - Big omega
-        - all of non-linear (addition self taught topics: tirtiary tree and Krukals algo)
+        - all of non-linear (addition self taught topics: ternary tree and Kruskal's algo)
         - all of sorting
         - (a test to show understanding of concepts)
     
@@ -21,8 +21,8 @@ Written: 50%
         - if you are using my notes for this exam, make sure to download them to avoid any complications with prof (plz)
     
     Will be given a question and will have to code an algorithm accordingly
-        (addition self taught topics: tirtiary tree and Krukals algo)
-    There will also be MCQs
+        (addition self taught topics: ternary tree and Kruskal algo)
+    There will also be MCQs and long answer questions
     And more complexity calc again
     Coding will be on your own computer and then will be submitted on Teams Form (more details below)
     
@@ -39,7 +39,7 @@ Homework will help a bit in the final mark: (Extra marks)
 
 Exams will be conducted as following
     
-    - Group 1 (Wednsday batch) -> 3rd of July       Written then Oral
-    - Group 2 (Monday Batch)   -> 1st of August     Oral then Written
+    - Group 1 (Wednesday batch) -> 3rd of July       Written then Oral
+    - Group 2 (Monday Batch)   -> 1st of August      Oral then Written
     If you want to take the exam at a later or earlier date (during one of the dates above) then your group
     it is possible to do so, you just have to ask the prof before the 1st of July

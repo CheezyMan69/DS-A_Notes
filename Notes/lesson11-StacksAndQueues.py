@@ -23,13 +23,13 @@ Stacks
     Advantages:
         + Simple to use and implement 
         + Fast for adding and/or removing elements -> Time = O(1)
-        + Can be implented into other data structures such as Linked Lists
+        + Can be implemented into other data structures such as Linked Lists
         + Used to implement undo and redo functions to the program
 
     Disadvantages:
         - There is a maximum size to the Stack, so large data sets are not good for this DS
         - Not fast to access elements that are not at the top
-        - Can't search efficently 
+        - Can't search efficiently 
 
 Queue
     Another linear Data Structure similar to stacks but the difference is that it uses the First in -> First out method unlike stacks where it is
@@ -52,7 +52,7 @@ Queue
         - Print
             Prints/Displays out the current queue
     
-    Advantages and Disadvatages are similar to stacks 
+    Advantages and Disadvantages are similar to stacks 
 
 '''
 #Code -------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ class stack:
     def pop(self):
         if not self.isEmpty():                              #if not empty:
             item = self.items.pop()                         #the stack pops (removes the top most element) and assigns it to the variable item
-            print(f"Popped {item}, Stack: {self.items}")    #shows that the item was succesfully popped as well as the rest of the stack
+            print(f"Popped {item}, Stack: {self.items}")    #shows that the item was successfully popped as well as the rest of the stack
             return item                                     #returns the item 
         else: 
             print("Pop Operation failed, Stack is empty")   #if the stack is empty: it shows that nothing can be popped because of it is empty
@@ -121,7 +121,7 @@ class queue:
     def pop(self):
         if not self.isEmpty():                              #if not empty:
             item = self.items.popleft()                     #the queue pops (removes the first element in) and assigns it to the variable item
-            print(f"Popped {item}, Queue: {self.items}")    #shows that the item was succesfully popped as well as the rest of the queue
+            print(f"Popped {item}, Queue: {self.items}")    #shows that the item was successfully popped as well as the rest of the queue
             return item                                     #returns the item 
         else:                                    
             print("Pop Operation failed, Queue is empty")   #if the queue is empty: it shows that nothing can be popped because of it is empty

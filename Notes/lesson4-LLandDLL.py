@@ -11,10 +11,10 @@ Structures are a group of variables and classes and objects mimic the real world
 
     - Doubly Linked Lists (DLL) = similar to Linked Lists but instead of only a next memory address it also houses a previous memory address
                                     This allows it to go back and forth (Backwards to the previous address and Forwards to the next address)
-                                         Sorting in this way is much much faster (apperantly)
-                                             For LL it only goes one way so more itterations for sorting but for DLL it can go back and forth so the 
-                                             amount of itterations are less getting it to sort faster
-                                                LL can take up to 6 itteration for sorting one list but DLL can do it in 3 itterations for the same list
+                                         Sorting in this way is much much faster (apparently)
+                                             For LL it only goes one way so more iterations for sorting but for DLL it can go back and forth so the 
+                                             amount of iterations are less getting it to sort faster
+                                                LL can take up to 6 iteration for sorting one list but DLL can do it in 3 iterations for the same list
 '''
 #Classes and Objects ---------------
 '''
@@ -22,8 +22,8 @@ Structures are a group of variables and classes and objects mimic the real world
 
 - Class = a class is a group of objects with an assigned set of properties 
 
-- Inheretance = a way of merging 2 classes using the parent class, properties from here will be copied to the other classes, 
-                and the child class, it recives the properties
+- Inheritance = a way of merging 2 classes using the parent class, properties from here will be copied to the other classes, 
+                and the child class, it receives the properties
 
 '''
 #Coding examples for each ---------------------------------------------------------
@@ -39,7 +39,7 @@ class singlyLinkedList:
         self.head = None
     
     def append(self, data):
-        newNode = node(data)                #everytime append is called it will create a new node
+        newNode = node(data)                #every time append is called it will create a new node
         if not self.head:                   #it checks if the head is empty or not
             self.head = newNode             #if empty then it assigns the new node to the head
         else:
@@ -63,7 +63,7 @@ sLL = singlyLinkedList()
 size = int(input("Enter the size of the Linked List: "))
 for _ in range(size):
     value = int(input("Enter the value for the Node: "))
-    sLL.append(value)                       #calls the append fuction (value is data)
+    sLL.append(value)                       #calls the append function (value is data)
 
 sLL.display()                               #calls the display function
 '''
