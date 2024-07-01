@@ -305,24 +305,37 @@ class unionFind:
 
 class graph:
     def __init__(self, vertices):
-        self.v = vertices
-        self.graph = []
+        self.v = vertices                                       #instead of the previous graph using a dictionary,
+        self.graph = []                                         #this one uses v for vertices and a list for the edges
 
-    def addEdge(self,u,v,weight):
-        self.graph.append((weight, u,v))
+    def addEdge(self,u,v,weight):                               
+        self.graph.append((weight, u,v))                        #adds the weight of the edge and the vertices connected to it as a tuple
 
     def kruskal(self):
-        self.graph.sort()
-        uf = unionFind(self.v)
+        self.graph.sort()                                       #sorts the edges in a ascending order (from smallest to biggest)
+        uf = unionFind(self.v)                                  #creates a unionFind data structure with the size of self.v
 
-        mst = []
-        mstWeight = 0
+        mst = []                                                #creates a minimum spanning tree list
+        mstWeight = 0                                           #and a weight total for it as well starting at 0
 
-        for edge in self.graph:
-            weight, u , v = edge
-            if uf.find(u) != uf.find(v):
-                uf.union(u,v)
-                mst.append(edge)
-                mstWeight += weight
+        for edge in self.graph:                                 #for each edge in the self.graph:
+            weight, u , v = edge                                #the weight and the vertices are all equal to the edge (the tuple added)
+            if uf.find(u) != uf.find(v):                        #if the finds are not equal: (checks if they are a cycle or not)
+                uf.union(u,v)                                   #it unites them, with the same process above (in unionFind)
+                mst.append(edge)                                #then it appends the edge to the mst list
+                mstWeight += weight                             #the total weight increments by the new weight 
         
-        return mst, mstWeight
+        return mst, mstWeight                                   #returns both the minimum spanning tree list and the total weight
+    
+g = graph(4)
+g.addEdge(0, 1, 10)
+g.addEdge(0, 2, 6)
+g.addEdge(0, 3, 5)
+g.addEdge(1, 3, 15)
+g.addEdge(2, 3, 4)
+
+print("\n",g.graph,"\n")
+
+mst, mst_weight = g.kruskal()
+print("Edges in MST:", mst)
+print("Total weight of MST:", mst_weight)
