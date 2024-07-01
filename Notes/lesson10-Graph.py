@@ -11,10 +11,10 @@ Graphs
         - Unweighted -> Edges do not have weights
     
     Ways to represent graphs:
-        - Adjacency Matrix -> 2D array which shows if there is an edge connecting the verticies (1) if not
+        - Adjacency Matrix -> 2D array which shows if there is an edge connecting the vertices (1) if not
                               then 0
         - Adjacency List -> It is an array of multiple lists, each list corresponds to a node and the content
-                            of it contains the adjecent nodes (the ones that are connected to it)
+                            of it contains the adjacent nodes (the ones that are connected to it)
         - Edge List -> A list of all the edges in the graph (all the lines that connect the nodes)
 
     Graph Operations:
@@ -25,7 +25,7 @@ Graphs
             + BFS
     
     Applications of Graph Data Structures:
-        Dijkstra's algorigm:
+        Dijkstra's algorithm:
             Used to find the shortest path from the start vertex to the end vertex
             Used in google maps and networking routes 
             ONLY USED WHEN WEIGHT IS ALL POSITIVE
@@ -36,10 +36,10 @@ Graphs
                 - To avoid reprocessing it will use a set that keeps track of all vertices that we visited
 
         Prim's algorithm:
-            Minimum spaning tree -> uses the shortest path possible 
+            Minimum spanning tree -> uses the shortest path possible 
             All the node must be connected with the lowest weight total (shortest path) AND must not have a cycle
-            Starts at a vertex and moves to the next vertex with the shortest path possible until all of the verticies are
-            connected with no cycle. Backtraking is permited so vertex C can be connected to multiple other vertecies as long as
+            Starts at a vertex and moves to the next vertex with the shortest path possible until all of the vertices are
+            connected with no cycle. Backtracking is permitted so vertex C can be connected to multiple other vertices as long as
             it does not create a cycle and is allows for the lowest weight total (shortest path).
                 - Used mainly in Networking
                 
@@ -47,12 +47,22 @@ Graphs
             Also a minimum Spanning Tree
             All nodes must be connected with the shortest path AND must not have a cycle but wat makes it different from Prim's algo
             is that it does not have a starting point. It aims to connect all of them with no backtracking while prim's backtracks.
-            Prim's algo starts at a vertex wihile Kruskal's starts at the lightest (smallest) edge and then goes to the next one (thry do
-            not have to be connected) it goes in asending order until all verticies are connected with no cycles.
+            Prim's algo starts at a vertex while Kruskal's starts at the lightest (smallest) edge and then goes to the next one (they do
+            not have to be connected) it goes in ascending order until all vertices are connected with no cycles.
+
+            This is achieved by implementing a Data structure called Union-Find or Disjoint set. This data structure does 2 things:
+                - Find
+                    Finds the root of the node or its representative by calling the function over again until it is found.
+                    This allows us to find the cycles that happen in the graph to avoid them.
+                - Union
+                    This unites 2 sets of data by rank (merge), this is necessary because then it stops from connecting 2 things that were already
+                    connected, meaning less errors for this algo
+            
+            Using this data structure we can properly use this algo to its full capacity as explained below in the code
             
 
     Advantages of Graphs:
-        + Used in many avenues including Machine Learning, Network Analysis, Pathfinding, etc
+        + Used in many avenues including Machine Learning, Network Analysis, PathFinding, etc
         + Used to represent complex data in a simple way 
         + The algorithms are very efficient and quick 
 
@@ -70,7 +80,7 @@ class graph:
 
     def addVertex(self,vertex):                 #Adds the Vertex
         if vertex not in self.graph:            #if the vertex is no in the graph it will add it to the graph
-            self.graph[vertex] = []             #adds the vertex as the key and anything inside is its values/adjecent to
+            self.graph[vertex] = []             #adds the vertex as the key and anything inside is its values/adjacent to
     
     def addEdge(self, vertex1, vertex2, directed = False):
         if vertex1 not in self.graph:           #if the vertex does not exist it will call the addVertex func
@@ -114,14 +124,14 @@ def bfs(graph, start):
                                                 #the process will repeat until the queue is empty (meaning when all the neighbours are in visited)
 
 def hasCycle(graph, vertex, visited, parent):   #Checks if there is a cycle
-    visited.add(vertex)                         #addes the veertex to the set of visited
+    visited.add(vertex)                         #adds the vertex to the set of visited
     for neighbour in graph[vertex]:             #for every neighbour of the specific vertex/node
         if neighbour not in visited:            #it will check if it is not in visited and - if not - recall the func to do it again
             if hasCycle(graph, vertex, visited, parent):
                 return True                     #if the func is true it will return true
             elif parent != neighbour:           #if the func is false but the parent is not a neighbour then it will return true
                 return True
-        return False                            #if neither requirments are met  it will return false
+        return False                            #if neither requirements are met  it will return false
     
 def containsCycle(graph):
     visited = set()                             #Creates a set called Visited
@@ -133,11 +143,11 @@ def containsCycle(graph):
     
 def shortestPath(graph, start, goal):
     visited = set()                             #creates a set called visited
-    queue = deque([(start, [start])])           #creates a queue with a tuple element that consits of the start vertex and value of the start vertex (this will be used for the path later)
+    queue = deque([(start, [start])])           #creates a queue with a tuple element that consists of the start vertex and value of the start vertex (this will be used for the path later)
     while queue:                                #while the queue has variables/elements:
         (vertex, path) = queue.popleft()        #the queue pops left (removes the first value in) and assigns it to the tuple of vertex and path
         for neighbour in graph[vertex]:         #for every neighbour in the key vertex:
-            if neighbour not in visited:        #if it is not in visted it will check,
+            if neighbour not in visited:        #if it is not in visited it will check,
                 if neighbour == goal:           #if the neighbour is the goal we need to reach and if so it will return the
                     return path + [neighbour]   #path and the neighbour
                 else:                           #if it is not the goal then it will 
@@ -164,7 +174,7 @@ bfs(g.graph,'A')
 print("Does this graph contains a cycle? ", containsCycle(g.graph))
 print("")
 '''
-
+'''
 #Weighted Graphs -------------------
 class graph:
     def __init__(self):
@@ -189,9 +199,9 @@ class graph:
         minHeap = [(0,start,None)]                              #min heap adds a tuple that contains the weight (0) the current vertex (start)
                                                                 #and from vertex (none) to its list
         while minHeap:
-            weight, currentVer, fromVer = heapq.heappop(minHeap)    #these values are then popped from the minheap and assigned to their respective variables
+            weight, currentVer, fromVer = heapq.heappop(minHeap)    #these values are then popped from the minHeap and assigned to their respective variables
 
-            if currentVer in visited:                           #if the current Vertex is vistied then continue normally
+            if currentVer in visited:                           #if the current Vertex is visited then continue normally
                 continue
             visited.add(currentVer)                             #if not then we add the current vertex to the visited set
 
@@ -199,7 +209,7 @@ class graph:
                 mst.append((fromVer,currentVer,weight))         #the current vertex, and the weight between them to the mst list
             for neighbour, edgeWeight in self.graph[currentVer]:    #in graph, we previously made it into a dictionary that holds the current vertex's neighbour and 
                 if neighbour not in visited:                    #the weight between them. Now for every one of those, if the neighbour is not in visited;
-                    heapq.heappush(minHeap, (edgeWeight, neighbour, currentVer))    #the edge weight, neighbour, and the current vertex are pushed into the minheap list as a tuple
+                    heapq.heappush(minHeap, (edgeWeight, neighbour, currentVer))    #the edge weight, neighbour, and the current vertex are pushed into the minHeap list as a tuple
                                                                                     #and the process repeats once again for as long as min heap is true (has a variable in it)
         return mst                                              #returns the minimum spanning tree list as the result
 
@@ -209,24 +219,24 @@ import heapq
 
 def dijkstra(graph,start):
     queue = []                                                  #Creates a queue list
-    heapq.heappush(queue,(0,start))                             #This func pushes (adds) 0 and our start value to the list called queue while maintaing a proper heap
+    heapq.heappush(queue,(0,start))                             #This func pushes (adds) 0 and our start value to the list called queue while maintaining a proper heap
     distances = {vertex: float('inf') for vertex in graph}      #creates a dictionary with a vertex key for each vertex in the graph with a float value inside  
     distances[start] = 0                                        #gives the key start a value of 0
     visited = set()                                             #creates a set called visited
 
     while queue:                                                #while the queue is true
         currentDis, currentVer = heapq.heappop(queue)           #the current distance is = to the smallest value in the queue (that value is then removed). Same process is done for current vertex
-        if currentVer in visited:                               #if the current vertex is in visted then continue 
+        if currentVer in visited:                               #if the current vertex is in visited then continue 
             continue
         visited.add(currentVer)                                 #if not in visited then add the vertex to visited
 
-        for neighbour, weight in graph[currentVer]:             #for each neightbour and weight in key currentVer
+        for neighbour, weight in graph[currentVer]:             #for each neighrbour and weight in key currentVer
             distance = currentDis + weight                      #distance is calculated as the current distance + the weight of the new edge
             if distance < distances[neighbour]:                 #if the distance calculated is less then the distance already calculated 
                 distances[neighbour] = distance                 #then it will be the new distance
                 heapq.heappush(queue, (distance,neighbour))     #this distance is then pushed into the queue along with the neighbour associated with it
     return distances                                            #returns the distances dictionary
-
+'''
 '''
 #Dijkstra Example -----------
 g = graph()
@@ -243,7 +253,7 @@ g.printGraph()
 
 print(dijkstra(g.graph, 'A'))
 '''
-
+'''
 #Prim Example ---------------
 g = graph()
 g.addEdge('A','B',4)
@@ -267,3 +277,52 @@ mst = g.prims('A')
 print("\n ---Minimum Spanning Tree--- ")
 for edge in mst:
     print(f"{edge[0]}-{edge[1]} (weight {edge[2]})")
+'''
+
+#Kruskal's Algo ----------------------
+class unionFind:
+    def __init__(self,size) -> None:
+        self.parent = list(range(size))                         #Creates a list with the size of another tree              
+        self.rank = [0]* size                                   #creates a ranking list with the same size
+    
+    def find(self, node):
+        if self.parent[node] != node:                           #if the index is not the same as the node value:
+            self.parent[node]=self.find(self.parent[node])      #then that index will equal to another search
+        return self.parent[node]                                #this will keep occurring until they are equal and then it will
+                                                                #return the representative (the index == to value)
+
+    def union(self,i,j):
+        root1 = self.find(i)                                    #root1 becomes representative of value i
+        root2 = self.find(j)                                    #root2 becomes representative of value j
+        if root1 != root2:                                      #if they are not equal:
+            if self.rank[root1]>self.rank[root2]:               #if the rank of root1 is more than the rank of root2:
+                self.parent[root2] = root1                      #root2's element will equal to root1's value
+            elif self.rank[root1]<self.rank[root2]:             #if the rank of root1 is less than the rank of root2:
+                self.parent[root1] = root2                      #root1's element will equal to root2's value
+            else:                                               #if they are equal:
+                self.parent[root2] = root1                      #root2's element will equal to root1's value
+                self.rank[root1]+=1                             #root1's rank increments by 1
+
+class graph:
+    def __init__(self, vertices):
+        self.v = vertices
+        self.graph = []
+
+    def addEdge(self,u,v,weight):
+        self.graph.append((weight, u,v))
+
+    def kruskal(self):
+        self.graph.sort()
+        uf = unionFind(self.v)
+
+        mst = []
+        mstWeight = 0
+
+        for edge in self.graph:
+            weight, u , v = edge
+            if uf.find(u) != uf.find(v):
+                uf.union(u,v)
+                mst.append(edge)
+                mstWeight += weight
+        
+        return mst, mstWeight
