@@ -12,18 +12,21 @@ Oral: 50%
         - all of sorting
         - (a test to show understanding of concepts)
     
-    will be in groups (2 each [will be chosen by prof])
-    15mins per group
+    It will be in groups (2 each [will be chosen by prof])
+    10 to 15 mins per group
 
 Written: 50%
 
     OPEN BOOK (DO NOT USE ANY AI EXTENSIONS AND NO GOOGLE OR AI)
         - if you are using my notes for this exam, make sure to download them to avoid any complications with prof (plz)
     
-    Will be given a question and will have to code an algorithm accordingly
-        (addition self taught topics: ternary tree and Kruskal algo)
-    There will also be MCQs and long answer questions
-    And more complexity calc again
+    Written exam will contain:
+        - Will be given multiple coding questions that will need to be answered with the proper algorithm(s) 
+        - There will be MCQs (multiple choice questions)
+        - Time and Space complexity calculations with the Big Notations
+        - All of these will be about all of the topics and the subtopics we have taken in class.
+                        (addition self taught topics: ternary tree and Kruskal algo)
+
     Coding will be on your own computer and then will be submitted on Teams Form (more details below)
     
     There will be a form on Teams, that will contain the MCQs and it is also where you will submit the code
@@ -41,5 +44,7 @@ Exams will be conducted as following
     
     - Group 1 (Wednesday batch) -> 3rd of July       Written then Oral
     - Group 2 (Monday Batch)   -> 1st of August      Oral then Written
+
+        (Requests for changing the dates have now been officially closed [no more requests will be approved])
     If you want to take the exam at a later or earlier date (during one of the dates above) then your group
     it is possible to do so, you just have to ask the prof before the 1st of July
